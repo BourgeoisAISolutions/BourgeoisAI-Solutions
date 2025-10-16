@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BourgeoisAI Solutions | AI + Automation Bounties</title>
+
+  <meta name="description" content="Browse Replit bounties, AI automation projects, and consulting offers by BourgeoisAI Solutions." />
+  <meta name="robots" content="index,follow" />
+  <link rel="icon" href="https://bourgeoisai.io/cleo-preview.jpg" />
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, sans-serif;
+      background: #0d1222;
+      color: #fff;
+      line-height: 1.6;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px 20px;
+      background: linear-gradient(135deg,#4f46e5,#7c3aed);
+    }
+    h1 { margin: 0; font-size: 2.5rem; }
+    h2 { color: #a5b4fc; margin-bottom: 0.5rem; }
+    .bounties {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
+      padding: 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    .card {
+      background: #111827;
+      border: 1px solid #374151;
+      border-radius: 12px;
+      padding: 20px;
+      transition: transform .2s;
+    }
+    .card:hover { transform: translateY(-4px); border-color:#6366f1; }
+    .amount { color: #22c55e; font-weight: bold; }
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid #1f2937;
+      font-size: 0.9rem;
+      color: #9ca3af;
+    }
+    .contact, .donate {
+      max-width: 600px;
+      margin: 40px auto;
+      background: #1f2937;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    input, textarea {
+      width: 100%; padding: 10px; margin: 6px 0 14px;
+      background: #111827; border: 1px solid #374151;
+      color: #fff; border-radius: 6px;
+    }
+    button {
+      background: #4f46e5;
+      border: none; color: white;
+      padding: 12px 24px; border-radius: 6px;
+      cursor: pointer; font-weight: 600;
+    }
+    button:hover { background: #4338ca; }
+    .small { font-size: 0.8rem; color: #aaa; text-align:center; margin-top: 10px; }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>BourgeoisAI Solutions</h1>
+    <p>AI Development • Automation • Replit Bounties • SaaS Consulting</p>
+  </header>
+
+  <section>
+    <h2 style="text-align:center;">🔥 Latest Replit Bounties</h2>
+    <div class="bounties" id="bountyList">Loading bounties...</div>
+  </section>
+
+  <section class="contact">
+    <h2>📬 Hire or Collaborate</h2>
+    <form action="https://formspree.io/f/your_form_id" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="message" rows="4" placeholder="Describe your project or idea..." required></textarea>
+      <button type="submit">Send Inquiry</button>
+    </form>
+    <p class="small">Or email directly: <a href="mailto:admin@bourgeoisai.com" style="color:#818cf8;">admin@bourgeoisai.com</a></p>
+  </section>
+
+  <section class="donate">
+    <h2>☕ Support This Project</h2>
+    <p>Help us build more AI-powered tools and courses.</p>
+    <form action="https://buy.stripe.com/test_8wM3ce8Qrfzg4GA4gg" method="POST">
+      <button>Donate $1</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 BourgeoisAI Solutions — Empowering AI innovation & education.</p>
+  </footer>
+
+  <script>
+    async function loadBounties() {
+      try {
+        const res = await fetch("https://replit.com/api/bounties");
+        const data = await res.json();
+        const target = document.getElementById("bountyList");
+        const filtered = data.filter(b =>
+          /ai|automation|python|next|data/i.test(b.title)
+        ).slice(0, 6);
+        target.innerHTML = filtered.map(b => `
+          <div class="card">
+            <h3>${b.title}</h3>
+            <p class="amount">$${b.amount}</p>
+            <p>${b.skills?.join(", ") || ""}</p>
+            <a href="https://replit.com${b.url}" target="_blank" style="color:#818cf8;">View Bounty →</a>
+          </div>
+        `).join("");
+      } catch {
+        document.getElementById("bountyList").textContent = "⚠️ Unable to load bounties.";
+      }
+    }
+    loadBounties();
+  </script>
+</body>
+</html>
