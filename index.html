@@ -3,44 +3,92 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BourgeoisAI Solutions | AI + Automation Bounties</title>
 
-  <meta name="description" content="Browse Replit bounties, AI automation projects, and consulting offers by BourgeoisAI Solutions." />
-  <meta name="robots" content="index,follow" />
-  <link rel="icon" href="https://bourgeoisai.io/cleo-preview.jpg" />
+  <title>BourgeoisAI Solutions | AI Automation & Consulting</title>
+  <meta name="description" content="BourgeoisAI Solutions provides AI automation, intelligent learning systems, and consulting services for entrepreneurs, educators, and organizations." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://bourgeoisai.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="BourgeoisAI Solutions" />
+  <meta property="og:description" content="AI automation, education, and consulting from BourgeoisAI.com" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://bourgeoisai.io/cleo-preview.jpg" />
 
   <style>
+    :root {
+      --bg: #0d1222;
+      --fg: #ffffff;
+      --accent: #8b5cf6;
+      --accent2: #6366f1;
+      --muted: #a5b4fc;
+      --card-bg: #111827;
+    }
     body {
       margin: 0;
       font-family: Inter, system-ui, sans-serif;
-      background: #0d1222;
-      color: #fff;
+      background: var(--bg);
+      color: var(--fg);
       line-height: 1.6;
     }
     header {
       text-align: center;
-      padding: 50px 20px 20px;
-      background: linear-gradient(135deg,#4f46e5,#7c3aed);
+      padding: 60px 20px 40px;
+      background: linear-gradient(135deg, var(--accent2), var(--accent));
     }
-    h1 { margin: 0; font-size: 2.5rem; }
-    h2 { color: #a5b4fc; margin-bottom: 0.5rem; }
-    .bounties {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
-      gap: 20px;
-      padding: 40px;
+    header h1 {
+      margin: 0;
+      font-size: 2.8rem;
+    }
+    header p {
+      font-size: 1.1rem;
+      color: #e0e7ff;
+      margin-top: 10px;
+    }
+    main {
       max-width: 1000px;
       margin: auto;
+      padding: 40px 20px;
+    }
+    section {
+      margin-bottom: 60px;
+    }
+    h2 {
+      color: var(--muted);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
     }
     .card {
-      background: #111827;
-      border: 1px solid #374151;
+      background: var(--card-bg);
+      border: 1px solid #1f2937;
       border-radius: 12px;
       padding: 20px;
-      transition: transform .2s;
+      transition: transform 0.2s, border-color 0.2s;
     }
-    .card:hover { transform: translateY(-4px); border-color:#6366f1; }
-    .amount { color: #22c55e; font-weight: bold; }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+    }
+    a.button {
+      display: inline-block;
+      background: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+    a.button:hover {
+      background: var(--accent2);
+    }
+    .center { text-align: center; }
     footer {
       text-align: center;
       padding: 40px 20px;
@@ -48,85 +96,66 @@
       font-size: 0.9rem;
       color: #9ca3af;
     }
-    .contact, .donate {
-      max-width: 600px;
-      margin: 40px auto;
-      background: #1f2937;
-      border-radius: 12px;
-      padding: 20px;
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      h2 { font-size: 1.5rem; }
     }
-    input, textarea {
-      width: 100%; padding: 10px; margin: 6px 0 14px;
-      background: #111827; border: 1px solid #374151;
-      color: #fff; border-radius: 6px;
-    }
-    button {
-      background: #4f46e5;
-      border: none; color: white;
-      padding: 12px 24px; border-radius: 6px;
-      cursor: pointer; font-weight: 600;
-    }
-    button:hover { background: #4338ca; }
-    .small { font-size: 0.8rem; color: #aaa; text-align:center; margin-top: 10px; }
   </style>
 </head>
 
 <body>
   <header>
     <h1>BourgeoisAI Solutions</h1>
-    <p>AI Development • Automation • Replit Bounties • SaaS Consulting</p>
+    <p>AI Automation • Consulting • Education</p>
   </header>
 
-  <section>
-    <h2 style="text-align:center;">🔥 Latest Replit Bounties</h2>
-    <div class="bounties" id="bountyList">Loading bounties...</div>
-  </section>
+  <main>
+    <section class="intro center">
+      <p>At <strong>BourgeoisAI</strong>, we build intelligent systems that accelerate learning and automate workflows.
+        Whether you need an AI instructor, a data-driven business platform, or a custom automation strategy, we deliver the tools and expertise to make it happen.</p>
+      <a href="https://bourgeoisai.com" class="button" target="_blank">Visit Main Site</a>
+    </section>
 
-  <section class="contact">
-    <h2>📬 Hire or Collaborate</h2>
-    <form action="https://formspree.io/f/your_form_id" method="POST">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="4" placeholder="Describe your project or idea..." required></textarea>
-      <button type="submit">Send Inquiry</button>
-    </form>
-    <p class="small">Or email directly: <a href="mailto:admin@bourgeoisai.com" style="color:#818cf8;">admin@bourgeoisai.com</a></p>
-  </section>
+    <section>
+      <h2>Featured Work</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>🎓 Cleo AI Instructor</h3>
+          <p>An interactive AI teacher for students and professionals — powered by Gemini and D-ID streaming avatars.</p>
+          <a href="https://bourgeoisai.io" class="button" target="_blank">View Demo</a>
+        </div>
+        <div class="card">
+          <h3>🇺🇸 OneHourCitizenship</h3>
+          <p>A one-hour citizenship course combining video avatars, bilingual lessons, and adaptive civics quizzes.</p>
+          <a href="https://onehourcitizenship.com" class="button" target="_blank">Start Course</a>
+        </div>
+        <div class="card">
+          <h3>⚙️ AI Automation Consulting</h3>
+          <p>Custom workflow automation, SaaS development, and AI integration for entrepreneurs and organizations.</p>
+          <a href="mailto:admin@bourgeoisai.com" class="button">Contact Us</a>
+        </div>
+      </div>
+    </section>
 
-  <section class="donate">
-    <h2>☕ Support This Project</h2>
-    <p>Help us build more AI-powered tools and courses.</p>
-    <form action="https://buy.stripe.com/test_8wM3ce8Qrfzg4GA4gg" method="POST">
-      <button>Donate $1</button>
-    </form>
-  </section>
+    <section>
+      <h2>Hire or Collaborate</h2>
+      <div class="center">
+        <p>Open for Replit bounties, freelance automation projects, and AI consulting engagements.</p>
+        <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" class="button" target="_blank">Book a Meeting</a>
+      </div>
+    </section>
+
+    <section class="center">
+      <h2>Support & Donations</h2>
+      <p>Help us expand free AI learning tools and civics training resources.</p>
+      <form action="https://buy.stripe.com/test_8wM3ce8Qrfzg4GA4gg" method="POST">
+        <button type="submit" class="button">Donate $1</button>
+      </form>
+    </section>
+  </main>
 
   <footer>
-    <p>© 2025 BourgeoisAI Solutions — Empowering AI innovation & education.</p>
+    <p>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color:#8b5cf6;">bourgeoisai.com</a></p>
   </footer>
-
-  <script>
-    async function loadBounties() {
-      try {
-        const res = await fetch("https://replit.com/api/bounties");
-        const data = await res.json();
-        const target = document.getElementById("bountyList");
-        const filtered = data.filter(b =>
-          /ai|automation|python|next|data/i.test(b.title)
-        ).slice(0, 6);
-        target.innerHTML = filtered.map(b => `
-          <div class="card">
-            <h3>${b.title}</h3>
-            <p class="amount">$${b.amount}</p>
-            <p>${b.skills?.join(", ") || ""}</p>
-            <a href="https://replit.com${b.url}" target="_blank" style="color:#818cf8;">View Bounty →</a>
-          </div>
-        `).join("");
-      } catch {
-        document.getElementById("bountyList").textContent = "⚠️ Unable to load bounties.";
-      }
-    }
-    loadBounties();
-  </script>
 </body>
 </html>
