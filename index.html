@@ -3,159 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>BourgeoisAI Solutions | AI Automation & Consulting</title>
-  <meta name="description" content="BourgeoisAI Solutions provides AI automation, intelligent learning systems, and consulting services for entrepreneurs, educators, and organizations." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://bourgeoisai.com" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="BourgeoisAI Solutions" />
-  <meta property="og:description" content="AI automation, education, and consulting from BourgeoisAI.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bourgeoisai.io/cleo-preview.jpg" />
-
+  <title>BourgeoisAI | AI Automation & Consulting</title>
+  <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners." />
   <style>
-    :root {
-      --bg: #0d1222;
-      --fg: #ffffff;
-      --accent: #8b5cf6;
-      --accent2: #6366f1;
-      --muted: #a5b4fc;
-      --card-bg: #111827;
-    }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      line-height: 1.6;
-    }
-    header {
-      text-align: center;
-      padding: 60px 20px 40px;
-      background: linear-gradient(135deg, var(--accent2), var(--accent));
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.8rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      color: #e0e7ff;
-      margin-top: 10px;
-    }
-    main {
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-    section {
-      margin-bottom: 60px;
-    }
-    h2 {
-      color: var(--muted);
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-    }
-    .card {
-      background: var(--card-bg);
-      border: 1px solid #1f2937;
-      border-radius: 12px;
-      padding: 20px;
-      transition: transform 0.2s, border-color 0.2s;
-    }
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: var(--accent);
-    }
-    a.button {
-      display: inline-block;
-      background: var(--accent);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 6px;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s;
-    }
-    a.button:hover {
-      background: var(--accent2);
-    }
-    .center { text-align: center; }
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #1f2937;
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-    @media (max-width: 600px) {
-      header h1 { font-size: 2rem; }
-      h2 { font-size: 1.5rem; }
-    }
+    body { margin:0; font-family:Inter,system-ui,sans-serif; background:#0d1222; color:white; line-height:1.6; }
+    header { text-align:center; padding:60px 20px 30px; background:linear-gradient(135deg,#6366f1,#8b5cf6); }
+    header h1 { margin:0; font-size:2.8rem; }
+    main { max-width:960px; margin:auto; padding:40px 20px; }
+    a.button, button { background:#8b5cf6; color:white; border:none; border-radius:6px; padding:12px 24px; text-decoration:none; font-weight:600; }
+    footer { text-align:center; padding:30px 20px; border-top:1px solid #1f2937; color:#9ca3af; }
+    #chat-bubble { position:fixed; bottom:20px; right:20px; width:60px; height:60px; border-radius:50%; background:#8b5cf6; display:flex; align-items:center; justify-content:center; font-size:26px; box-shadow:0 4px 12px rgba(0,0,0,0.3); cursor:pointer; transition:.2s; z-index:9999;}
+    #chat-bubble:hover { transform:scale(1.1);}
+    #chat-container { display:none; position:fixed; bottom:90px; right:20px; width:320px; background:#111827; border:1px solid #374151; border-radius:10px; padding:12px; box-shadow:0 4px 20px rgba(0,0,0,0.4); z-index:9999;}
+    #chat-window { background:#111827; height:250px; overflow-y:auto; padding:8px; border-radius:6px; border:1px solid #374151; margin-bottom:8px; font-size:14px; color:white;}
+    #chat-form { display:flex; gap:6px;}
+    #user-input { flex:1; padding:8px; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;}
+    #chat-form button { padding:8px 14px; border:none; border-radius:6px; background:#8b5cf6; color:white; cursor:pointer;}
   </style>
 </head>
-
 <body>
   <header>
     <h1>BourgeoisAI Solutions</h1>
-    <p>AI Automation • Consulting • Education</p>
+    <p>AI Automation • Consulting • Intelligent Learning</p>
   </header>
 
   <main>
-    <section class="intro center">
-      <p>At <strong>BourgeoisAI</strong>, we build intelligent systems that accelerate learning and automate workflows.
-        Whether you need an AI instructor, a data-driven business platform, or a custom automation strategy, we deliver the tools and expertise to make it happen.</p>
-      <a href="https://bourgeoisai.com" class="button" target="_blank">Visit Main Site</a>
+    <section style="text-align:center">
+      <p>BourgeoisAI builds intelligent systems that accelerate learning and automate workflows.
+      Explore AI-powered teaching, automation consulting, and data-driven solutions.</p>
+      <a href="https://bourgeoisai.com" class="button">Visit BourgeoisAI.com</a>
     </section>
 
-    <section>
-      <h2>Featured Work</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>🎓 Cleo AI Instructor</h3>
-          <p>An interactive AI teacher for students and professionals — powered by Gemini and D-ID streaming avatars.</p>
-          <a href="https://bourgeoisai.io" class="button" target="_blank">View Demo</a>
-        </div>
-        <div class="card">
-          <h3>🇺🇸 OneHourCitizenship</h3>
-          <p>A one-hour citizenship course combining video avatars, bilingual lessons, and adaptive civics quizzes.</p>
-          <a href="https://onehourcitizenship.com" class="button" target="_blank">Start Course</a>
-        </div>
-        <div class="card">
-          <h3>⚙️ AI Automation Consulting</h3>
-          <p>Custom workflow automation, SaaS development, and AI integration for entrepreneurs and organizations.</p>
-          <a href="mailto:admin@bourgeoisai.com" class="button">Contact Us</a>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <h2>Hire or Collaborate</h2>
-      <div class="center">
-        <p>Open for Replit bounties, freelance automation projects, and AI consulting engagements.</p>
-        <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" class="button" target="_blank">Book a Meeting</a>
-      </div>
-    </section>
-
-    <section class="center">
-      <h2>Support & Donations</h2>
-      <p>Help us expand free AI learning tools and civics training resources.</p>
-      <form action="https://buy.stripe.com/test_8wM3ce8Qrfzg4GA4gg" method="POST">
-        <button type="submit" class="button">Donate $1</button>
-      </form>
+    <section style="margin-top:50px;text-align:center">
+      <h2>💬 Chat with Cleo</h2>
+      <p>Ask Cleo about BourgeoisAI, our services, or the Citizenship Course.</p>
     </section>
   </main>
 
-  <footer>
-    <p>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color:#8b5cf6;">bourgeoisai.com</a></p>
-  </footer>
+  <footer>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color:#8b5cf6;">bourgeoisai.com</a></footer>
+
+  <div id="chat-bubble">💬</div>
+  <div id="chat-container">
+    <div id="chat-window">
+      <p><strong>Cleo:</strong> Hi! I’m Cleo — your AI assistant from BourgeoisAI. Ask me anything!</p>
+    </div>
+    <form id="chat-form">
+      <input type="text" id="user-input" placeholder="Type your message..." />
+      <button type="submit">➤</button>
+    </form>
+  </div>
+
+  <script>
+    const bubble=document.getElementById('chat-bubble');
+    const container=document.getElementById('chat-container');
+    const form=document.getElementById('chat-form');
+    const input=document.getElementById('user-input');
+    const chat=document.getElementById('chat-window');
+
+    const saved=JSON.parse(localStorage.getItem('cleoChat')||'[]');
+    saved.forEach(m=>appendMessage(m.sender,m.text));
+
+    bubble.addEventListener('click',()=>{container.style.display=container.style.display==='none'?'block':'none';});
+
+    form.addEventListener('submit',async e=>{
+      e.preventDefault();
+      const text=input.value.trim();
+      if(!text)return;
+      appendMessage('You',text);save('You',text);
+      input.value='';
+      try{
+        const res=await fetch('/api/cleo-chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text})});
+        const data=await res.json();
+        const reply=data.reply||"Sorry, I couldn’t think of a response.";
+        appendMessage('Cleo',reply);save('Cleo',reply);
+      }catch{
+        const fallback="I’m Cleo from BourgeoisAI — visit bourgeoisai.com for more!";
+        appendMessage('Cleo',fallback);save('Cleo',fallback);
+      }
+    });
+
+    function appendMessage(sender,msg){
+      const p=document.createElement('p');
+      p.innerHTML=`<strong>${sender}:</strong> ${msg}`;
+      chat.appendChild(p);chat.scrollTop=chat.scrollHeight;
+    }
+    function save(sender,text){
+      const h=JSON.parse(localStorage.getItem('cleoChat')||'[]');
+      h.push({sender,text});if(h.length>20)h.shift();
+      localStorage.setItem('cleoChat',JSON.stringify(h));
+    }
+  </script>
 </body>
 </html>
