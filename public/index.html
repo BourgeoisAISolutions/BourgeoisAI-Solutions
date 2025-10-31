@@ -7,10 +7,9 @@
   <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners. Get the AI Fundamentals Workshop today." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" loading="lazy" />
 
   <style>
-    /* [CSS unchanged from previous, for brevity] */
     :root {
       --bg-dark: #0F0A19;
       --text-dark: #FFFFFF;
@@ -22,13 +21,121 @@
       --button-hover-bg: #0099CC;
       --card-bg: #1A0F2B;
       --card-border: rgba(0, 204, 255, 0.4);
-      --chat-bubble-bg: var(--accent-primary);
-      --chat-scrollbar-thumb: #D0D8E8;
       --chat-window-bg: #1A0F2B;
-      --chat-bubble-shadow: rgba(0, 204, 255, 0.5);
+      --chat-scrollbar-thumb: #D0D8E8;
       --chat-placeholder: #A8B8C7;
     }
-    /* Other styles remain unchanged */
+
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      line-height: 1.6;
+    }
+
+    header {
+      background: var(--header-gradient);
+      padding: 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      background: var(--button-bg);
+      color: var(--bg-dark);
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--button-hover-bg);
+    }
+
+    main {
+      padding: 2rem;
+      max-width: 960px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    #chat-window {
+      background: var(--chat-window-bg);
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+      height: 250px;
+      overflow-y: auto;
+      padding: 1rem;
+      font-size: 14px;
+    }
+
+    #chat-form {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
+
+    #user-input {
+      flex: 1;
+      padding: 0.75rem;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      background: #1f2937;
+      color: white;
+    }
+
+    #chat-bubble {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-primary);
+      color: var(--bg-dark);
+      padding: 0.75rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 0 10px var(--chat-bubble-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    #chat-bubble:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      background: #1B112B;
+    }
+
+    footer a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.5rem;
+      }
+
+      .cta-button {
+        padding: 0.5rem 1rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -40,59 +147,53 @@
   </header>
 
   <main>
-    <section id="chatbot-hero">
-      <h1>Welcome to BourgeoisAI Chatbot</h1>
+    <section id="chatbot-hero" aria-label="Chatbot interface">
+      <h2>Welcome to BourgeoisAI Chatbot</h2>
       <p>Ask me anything about AI automation and productivity!</p>
 
-      <div id="chat-window" role="log" aria-relevant="additions" style="color:white; background:#1A0F2B; border-radius:6px; border:1px solid #374151; height:250px; overflow-y:auto; padding:8px; margin-bottom:10px; font-size:14px;"></div>
+      <div id="chat-window" role="log" aria-live="polite"></div>
 
-      <form id="chat-form" aria-label="Chat input form" style="display:flex; gap:6px;">
-        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" style="flex:1; padding:8px; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
-        <button type="submit" aria-label="Send message" style="padding:8px 14px; border:none; border-radius:6px; background:var(--button-bg); color:var(--bg-dark); cursor:pointer; margin-top:0;">➤</button>
+      <form id="chat-form">
+        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" />
+        <button type="submit" aria-label="Send message">➤</button>
       </form>
     </section>
 
-    <section id="purchase" class="purchase-section">
+    <section id="purchase">
       <h2>The AI Productivity Blueprint Workshop</h2>
       <p class="price">$29 USD (One-Time Payment)</p>
       <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
       <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
     </section>
 
-    <section style="margin-top:50px;text-align:center; max-width: 700px;">
+    <section>
       <h2>Need Expert Help? Book a Strategy Session</h2>
       <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-      <!-- Chat Now button removed -->
       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
   </main>
 
   <footer>
     © 2025 BourgeoisAI Solutions •
-    <a href="https://bourgeoisai.com" target="_blank" rel="noopener noreferrer">bourgeoisai.com</a>•
-    <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    <a href="https://bourgeoisai.com" target="_blank">bourgeoisai.com</a>•
+    <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank">LinkedIn</a>
   </footer>
 
-  <div id="chat-bubble" aria-label="Toggle chat" title="Chat with BourgeoisAI">
-    AI
-  </div>
+  <div id="chat-bubble" aria-label="Toggle chat" title="Chat with BourgeoisAI">AI</div>
 
   <script>
     const chatBubble = document.getElementById("chat-bubble");
     const chatContainer = document.getElementById("chatbot-hero");
-    chatBubble.addEventListener("click", function () {
-      if (chatContainer.style.display === "block") {
-        chatContainer.style.display = "none";
-      } else {
-        chatContainer.style.display = "block";
-      }
+
+    chatBubble.addEventListener("click", () => {
+      chatContainer.style.display = chatContainer.style.display === "none" ? "block" : "none";
     });
 
     const chatForm = document.getElementById("chat-form");
     const userInput = document.getElementById("user-input");
     const chatWindow = document.getElementById("chat-window");
 
-    chatForm.addEventListener("submit", async function (e) {
+    chatForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const message = userInput.value.trim();
       if (!message) return;
@@ -110,13 +211,11 @@
           body: JSON.stringify({ message })
         });
         const data = await response.json();
-        const typingEl = document.getElementById("ai-typing");
-        if (typingEl) typingEl.remove();
+        document.getElementById("ai-typing").remove();
         chatWindow.innerHTML += `<p><strong>BourgeoisAI:</strong> ${data.reply}</p>`;
         chatWindow.scrollTop = chatWindow.scrollHeight;
       } catch (error) {
-        const typingEl = document.getElementById("ai-typing");
-        if (typingEl) typingEl.remove();
+        document.getElementById("ai-typing").remove();
         chatWindow.innerHTML += `<p><strong>BourgeoisAI:</strong> Sorry, something went wrong.</p>`;
       }
     });
