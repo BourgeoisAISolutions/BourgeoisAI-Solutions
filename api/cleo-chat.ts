@@ -57,7 +57,7 @@ export default async (req, res) => {
     // Success response
     res.status(200).json({ reply });
   } catch (error) {
-    console.error("AI API Error:", error);
+    console.error("AI API Error full object:", error);
     // Graceful failure response
     res.status(500).json({ reply: "I'm experiencing a quick technical difficulty. Please visit the links above for instant access to the workshop or to schedule a call!" });
   }
