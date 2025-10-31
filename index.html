@@ -5,73 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BourgeoisAI: AI Automation Masterclass & Consulting | 10x Productivity</title>
   <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners. Get the AI Fundamentals Workshop today." />
-  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-  
-  <style>
-    /* --- PREMIUM METALLIC PURPLE & NEON BLUE THEME (DARK MODE ONLY) --- */
-    :root {
-      /* Base Colors (Deep Purple/Black theme) */
-      --bg-dark: #0F0A19; /* Deep Purple Black background */
-      --text-dark: #FFFFFF; /* Main body text color set to pure white for MAX contrast */
-      --text-light: #C0DEFF; /* Secondary text: very light blue for distinction */
-      
-      /* ACCENT COLORS: Vibrant Neon Blue/Cyan (Primary CTA) & Pure White (Secondary Highlight/Titles) */
-      --accent-primary: #00CCFF; /* Vibrant Electric Blue/Cyan for primary CTAs and active elements */
-      --accent-secondary: #FFFFFF; /* Pure White for titles, main highlights, and outlines */
-      
-      /* UI Elements */
-      --header-gradient: linear-gradient(135deg, var(--bg-dark), #1B112B); /* Metallic deep purple gradient for depth */
-      --button-bg: var(--accent-primary); /* Primary CTA: Neon Blue */
-      --button-hover-bg: #00AACC; /* Slightly darker Neon Blue for hover */
-      --card-bg: #1A0F2B; /* Darker, clearly defined card background */
-      --card-border: rgba(0, 204, 255, 0.4); /* Border based on Neon Blue */
-      
-      /* Chat Elements */
-      --chat-bubble-bg: var(--accent-primary); /* Chat bubble is Neon Blue */
-      --chat-scrollbar-thumb: #D0D8E8; /* Light gray for scrollbar */
-      --chat-window-bg: #1A0F2B; /* Keep chat window same as card BG */
-      --chat-bubble-shadow: rgba(0, 204, 255, 0.5); /* Shadow based on Neon Blue */
-      --chat-placeholder: #A8B8C7; /* Light purplish gray for readable placeholder text */
-    }
 
-    /* BEST PRACTICE: Smooth scrolling for internal anchor links */
-    html {
-        scroll-behavior: smooth;
+  <style>
+    :root {
+      --bg-dark: #0F0A19;
+      --text-dark: #FFFFFF;
+      --text-light: #C0DEFF;
+      --accent-primary: #00CCFF;
+      --accent-secondary: #FFFFFF;
+      --header-gradient: linear-gradient(135deg, var(--bg-dark), #1B112B);
+      --button-bg: var(--accent-primary);
+      --button-hover-bg: #00AACC;
+      --card-bg: #1A0F2B;
+      --card-border: rgba(0, 204, 255, 0.4);
+      --chat-bubble-bg: var(--accent-primary);
+      --chat-scrollbar-thumb: #D0D8E8;
+      --chat-window-bg: #1A0F2B;
+      --chat-bubble-shadow: rgba(0, 204, 255, 0.5);
+      --chat-placeholder: #A8B8C7;
     }
-    
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: 'Inter', system-ui, sans-serif;
-      /* Apply the metallic gradient globally */
       background: var(--header-gradient);
-      color: var(--text-dark); /* Uses pure white */
+      color: var(--text-dark);
       line-height: 1.6;
-      transition: background-color 0.3s ease, color 0.3s ease;
+      transition: background-color 0.3s, color 0.3s;
     }
-
     header {
       text-align: center;
       padding: 80px 20px 40px; 
-      /* Transparent background to show the body gradient */
       background: transparent;
       color: var(--text-dark);
     }
     header h1 {
       margin: 0;
-      font-size: 3.5rem; 
+      font-size: 3.5rem;
       font-weight: 800;
-      letter-spacing: -1px; 
-      color: var(--accent-secondary); /* Header H1 uses white for maximum impact */
-      text-shadow: 0 0 15px rgba(255, 255, 255, 0.4); /* Subtle glow */
+      letter-spacing: -1px;
+      color: var(--accent-secondary);
+      text-shadow: 0 0 15px rgba(255,255,255,0.4);
     }
     header p {
       margin: 0.5rem 0 0;
       font-size: 1.25rem;
-      color: var(--text-light); /* Now light blue for subtle distinction */
-      font-weight: 600; 
+      color: var(--text-light);
+      font-weight: 600;
+    }
+    .cta-button {
+      background: var(--button-bg);
+      color: var(--bg-dark);
+      border: none;
+      border-radius: 9999px;
+      padding: 14px 30px;
+      text-decoration: none;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+      display: inline-block;
+      margin-top: 20px;
+      font-size: 1.1rem;
+      box-shadow: 0 5px 15px rgba(0,204,255,0.4);
+    }
+    .cta-button:hover {
+      background: var(--button-hover-bg);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,204,255,0.6);
+    }
+    .cta-button.outline {
+      background: transparent;
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+      box-shadow: none;
+    }
+    .cta-button.outline:hover {
+      background: var(--accent-primary);
+      color: var(--bg-dark);
+      box-shadow: 0 5px 15px rgba(0,204,255,0.4);
     }
     main {
       max-width: 960px;
@@ -79,53 +93,17 @@
       padding: 40px 20px;
       text-align: center;
     }
-    
-    /* PREMIUM: Consolidated button styling */
-    .cta-button {
-      background: var(--button-bg);
-      color: var(--bg-dark); /* Deep Purple text on bright neon blue button */
-      border: none;
-      border-radius: 9999px; /* Pill shape */
-      padding: 14px 30px; 
-      text-decoration: none;
-      font-weight: 700; 
-      cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.2s, box-shadow 0.3s;
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0, 204, 255, 0.4); /* Neon blue shadow for lift */
-    }
-    .cta-button:hover {
-      background: var(--button-hover-bg);
-      transform: translateY(-2px); 
-      box-shadow: 0 8px 20px rgba(0, 204, 255, 0.6); /* Stronger Neon blue shadow */
-    }
-    .cta-button.outline {
-      background: transparent;
-      border: 2px solid var(--accent-primary); /* Outline uses primary neon blue */
-      color: var(--accent-primary); /* Text uses primary neon blue */
-      box-shadow: none;
-    }
-    .cta-button.outline:hover {
-      background: var(--accent-primary); /* Neon blue hover fill */
-      color: var(--bg-dark); /* Deep Purple text on neon blue button */
-      box-shadow: 0 5px 15px rgba(0, 204, 255, 0.4);
-    }
-
     footer {
       text-align: center;
       padding: 40px 20px;
       border-top: 1px solid #374151;
-      color: var(--text-light); /* Now light blue */
+      color: var(--text-light);
       font-size: 0.9rem;
     }
     footer a {
-      color: var(--accent-primary); /* Links use primary neon blue */
+      color: var(--accent-primary);
       text-decoration: none;
     }
-
-    /* Chat bubble styles using the new accent color (Neon Blue) */
     #chat-bubble {
       position: fixed;
       bottom: 20px;
@@ -133,21 +111,19 @@
       width: 60px;
       height: 60px;
       border-radius: 50%;
-      background: var(--chat-bubble-bg); /* Neon Blue chat bubble */
+      background: var(--chat-bubble-bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1rem; /* Smaller font for text 'AI' */
+      font-size: 1rem;
       font-weight: 700;
-      color: var(--bg-dark); /* Deep Purple text for contrast */
-      box-shadow: 0 4px 12px var(--chat-bubble-shadow); 
+      color: var(--bg-dark);
+      box-shadow: 0 4px 12px var(--chat-bubble-shadow);
       cursor: pointer;
       transition: transform 0.2s, box-shadow 0.3s;
       z-index: 9999;
     }
-    #chat-bubble:hover {
-      transform: scale(1.1);
-    }
+    #chat-bubble:hover { transform: scale(1.1); }
     #chat-container {
       display: none;
       position: fixed;
@@ -173,21 +149,12 @@
       scrollbar-width: thin;
       scrollbar-color: var(--chat-scrollbar-thumb) transparent;
     }
-    #chat-window::-webkit-scrollbar {
-      width: 8px;
-    }
-    #chat-window::-webkit-scrollbar-track {
-      background: transparent;
-    }
+    #chat-window::-webkit-scrollbar { width: 8px; }
+    #chat-window::-webkit-scrollbar-track { background: transparent; }
     #chat-window::-webkit-scrollbar-thumb {
-      background-color: var(--chat-scrollbar-thumb);
-      border-radius: 10px;
-      border: 2px solid transparent;
+      background-color: var(--chat-scrollbar-thumb); border-radius: 10px; border: 2px solid transparent;
     }
-    #chat-form {
-      display: flex;
-      gap: 6px;
-    }
+    #chat-form { display: flex; gap: 6px; }
     #user-input {
       flex: 1;
       padding: 8px;
@@ -196,31 +163,26 @@
       background: #1f2937;
       color: white;
     }
-    /* Explicitly set placeholder text color for readability */
-    #user-input::placeholder {
-        color: var(--chat-placeholder);
-    }
+    #user-input::placeholder { color: var(--chat-placeholder); }
     #chat-form button {
       padding: 8px 14px;
       border: none;
       border-radius: 6px;
       background: var(--button-bg);
-      color: var(--bg-dark); /* Deep Purple text on bright neon blue button */
+      color: var(--bg-dark);
       cursor: pointer;
-      margin-top: 0; /* Override cta-button margin */
+      margin-top: 0;
     }
-
-    /* Video Embed Styles */
     .video-container {
       position: relative;
-      padding-bottom: 56.25%; /* 16:9 ratio */
+      padding-bottom: 56.25%;
       padding-top: 25px;
       height: 0;
       margin: 30px auto;
-      max-width: 700px; /* Increased max-width for better display */
-      border-radius: 12px; /* Rounded corners for the container */
-      overflow: hidden; /* Ensures iframe corners are also rounded */
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      max-width: 700px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
     }
     .video-container iframe {
       position: absolute;
@@ -230,38 +192,35 @@
       height: 100%;
       border: none;
     }
-    
-    /* Purchase section */
     .purchase-section {
       margin-top: 50px;
-      padding: 40px 30px; 
-      background: var(--card-bg); /* Uses the darker card background */
-      border-radius: 16px; 
+      padding: 40px 30px;
+      background: var(--card-bg);
+      border-radius: 16px;
       border: 1px solid var(--card-border);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); 
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     }
     .purchase-section h2 {
       font-size: 2rem;
-      color: var(--accent-secondary); /* Heading uses white accent */
+      color: var(--accent-secondary);
       font-weight: 800;
       margin-bottom: 0.75rem;
     }
     .purchase-section p {
       max-width: 700px;
       margin: auto;
-      color: var(--text-dark); /* Now pure white for main description */
-      font-size: 1.2rem; 
-      font-weight: 600; 
+      color: var(--text-dark);
+      font-size: 1.2rem;
+      font-weight: 600;
       margin-bottom: 1.5rem;
     }
     .purchase-section .price {
-        font-size: 1.75rem; 
+        font-size: 1.75rem;
         font-weight: 800;
-        color: var(--accent-primary); /* Price in neon blue */
+        color: var(--accent-primary);
         margin-bottom: 10px;
         display: block;
     }
-
   </style>
 </head>
 <body>
@@ -276,17 +235,15 @@
       <p style="max-width: 800px; margin: 0 auto; font-size: 1.25rem; color: var(--text-dark); font-weight: 600;">
         BourgeoisAI builds intelligent systems that accelerate learning and automate workflows.
         Explore our high-performance workshops, automation consulting, and data-driven solutions
-        designed to **10x your professional output**.
+        designed to <strong>10x your professional output</strong>.
       </p>
     </section>
 
+    <!-- No demo heading here! Just the videos -->
     <section style="text-align:center;">
-        <h2 style="font-size: 2rem; color: var(--accent-secondary); font-weight: 800; margin-top: 40px; margin-bottom: 10px;"></h2>
-        
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/IIG1WmuFwV4" title="AI Automation Masterclass Preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
-        
         <div class="video-container">
           <iframe src="https://www.youtube.com/embed/sB-s2PtCpns" title="AI Demos and Workflows Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
         </div>
@@ -296,7 +253,6 @@
       <h2>The AI Productivity Blueprint Workshop</h2>
       <p class="price">$29 USD (One-Time Payment)</p>
       <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
-      
       <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">
         Secure Your Copy Now
       </a>
