@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BourgeoisAI: AI Automation Masterclass & Consulting | 10x Productivity</title>
+  <title>BourgeoisAI: Chatbot Hero</title>
   <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners. Get the AI Fundamentals Workshop today." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
     :root {
@@ -37,11 +37,17 @@
       color: var(--text-dark);
       line-height: 1.6;
       transition: background-color 0.3s, color 0.3s;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px 10px 40px;
     }
     header {
       text-align: center;
-      padding: 80px 20px 40px;
-      background: transparent;
+      width: 100%;
+      max-width: 960px;
+      padding: 40px 20px 40px;
       color: var(--text-dark);
     }
     header h1 {
@@ -58,54 +64,59 @@
       color: var(--text-light);
       font-weight: 600;
     }
-    .cta-button {
-      background: var(--button-bg);
-      color: var(--bg-dark);
-      border: none;
-      border-radius: 9999px;
-      padding: 14px 30px;
-      text-decoration: none;
-      font-weight: 700;
-      cursor: pointer;
-      transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
-      display: inline-block;
-      margin-top: 20px;
-      font-size: 1.1rem;
-      box-shadow: 0 5px 15px rgba(0,204,255,0.4);
+
+    #chatbot-hero {
+      width: 100%;
+      max-width: 700px;
+      background: rgba(0,0,0,0.8);
+      color: white;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 0 20px rgba(255,255,255,0.3);
+      font-size: 1.2em;
+      text-align: center;
+      margin-bottom: 50px;
     }
-    .cta-button:hover {
-      background: var(--button-hover-bg);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(0,204,255,0.6);
+
+    #chatbot-hero h1 {
+      margin-bottom: 1rem;
     }
-    .cta-button.outline {
-      background: transparent;
-      border: 2px solid var(--accent-primary);
-      color: var(--accent-primary);
-      box-shadow: none;
+    #chatbot-hero p {
+      margin-bottom: 1rem;
     }
-    .cta-button.outline:hover {
-      background: var(--accent-primary);
-      color: var(--bg-dark);
-      box-shadow: 0 5px 15px rgba(0,204,255,0.4);
+
+    .purchase-section {
+      max-width: 700px;
+      width: 100%;
+      background: var(--card-bg);
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      padding: 40px 30px;
+      margin-bottom: 50px;
+      color: var(--text-dark);
     }
-    main {
-      max-width: 960px;
+    .purchase-section h2 {
+      font-size: 2rem;
+      color: var(--accent-secondary);
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+    .purchase-section p {
+      max-width: 700px;
       margin: auto;
-      padding: 40px 20px;
-      text-align: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
     }
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      border-top: 1px solid #374151;
-      color: var(--text-light);
-      font-size: 0.9rem;
-    }
-    footer a {
+    .purchase-section .price {
+      font-size: 1.75rem;
+      font-weight: 800;
       color: var(--accent-primary);
-      text-decoration: none;
+      margin-bottom: 10px;
+      display: block;
     }
+
     #chat-bubble {
       position: fixed;
       bottom: 20px;
@@ -125,7 +136,10 @@
       transition: transform 0.2s, box-shadow 0.3s;
       z-index: 9999;
     }
-    #chat-bubble:hover { transform: scale(1.1); }
+    #chat-bubble:hover {
+      transform: scale(1.1);
+    }
+
     #chat-container {
       display: none;
       position: fixed;
@@ -151,12 +165,21 @@
       scrollbar-width: thin;
       scrollbar-color: var(--chat-scrollbar-thumb) transparent;
     }
-    #chat-window::-webkit-scrollbar { width: 8px; }
-    #chat-window::-webkit-scrollbar-track { background: transparent; }
-    #chat-window::-webkit-scrollbar-thumb {
-      background-color: var(--chat-scrollbar-thumb); border-radius: 10px; border: 2px solid transparent;
+    #chat-window::-webkit-scrollbar {
+      width: 8px;
     }
-    #chat-form { display: flex; gap: 6px; }
+    #chat-window::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    #chat-window::-webkit-scrollbar-thumb {
+      background-color: var(--chat-scrollbar-thumb);
+      border-radius: 10px;
+      border: 2px solid transparent;
+    }
+    #chat-form {
+      display: flex;
+      gap: 6px;
+    }
     #user-input {
       flex: 1;
       padding: 8px;
@@ -165,7 +188,9 @@
       background: #1f2937;
       color: white;
     }
-    #user-input::placeholder { color: var(--chat-placeholder); }
+    #user-input::placeholder {
+      color: var(--chat-placeholder);
+    }
     #chat-form button {
       padding: 8px 14px;
       border: none;
@@ -175,57 +200,10 @@
       cursor: pointer;
       margin-top: 0;
     }
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%;
-      padding-top: 25px;
-      height: 0;
-      margin: 30px auto;
-      max-width: 700px;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-    .purchase-section {
-      margin-top: 50px;
-      padding: 40px 30px;
-      background: var(--card-bg);
-      border-radius: 16px;
-      border: 1px solid var(--card-border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-    }
-    .purchase-section h2 {
-      font-size: 2rem;
-      color: var(--accent-secondary);
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-    }
-    .purchase-section p {
-      max-width: 700px;
-      margin: auto;
-      color: var(--text-dark);
-      font-size: 1.2rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-    .purchase-section .price {
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--accent-primary);
-      margin-bottom: 10px;
-      display: block;
-    }
   </style>
 </head>
 <body>
+
   <header>
     <h1>BourgeoisAI Solutions</h1>
     <p>AI Automation • Intelligent Learning • Expert Consulting</p>
@@ -233,21 +211,16 @@
   </header>
 
   <main>
-    <section style="text-align:center">
-      <p style="max-width: 800px; margin: 0 auto; font-size: 1.25rem; color: var(--text-dark); font-weight: 600;">
-        BourgeoisAI builds intelligent systems that accelerate learning and automate workflows.
-        Explore our high-performance workshops, automation consulting, and data-driven solutions
-        designed to <strong>10x your professional output</strong>.
-      </p>
-    </section>
+    <section id="chatbot-hero">
+      <h1>Welcome to BourgeoisAI Chatbot</h1>
+      <p>Ask me anything about AI automation and productivity!</p>
 
-    <section style="text-align:center;">
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/IIG1WmuFwV4" title="AI Automation Masterclass Preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-container">
-        <iframe src="https://www.youtube.com/embed/sB-s2PtCpns" title="AI Demos and Workflows Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+      <div id="chat-window" role="log" aria-relevant="additions" style="color:white; background:#1A0F2B; border-radius:6px; border:1px solid #374151; height:250px; overflow-y:auto; padding:8px; margin-bottom:10px; font-size:14px;"></div>
+
+      <form id="chat-form" aria-label="Chat input form" style="display:flex; gap:6px;">
+        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" style="flex:1; padding:8px; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
+        <button type="submit" aria-label="Send message" style="padding:8px 14px; border:none; border-radius:6px; background:var(--button-bg); color:var(--bg-dark); cursor:pointer; margin-top:0;">➤</button>
+      </form>
     </section>
 
     <section id="purchase" class="purchase-section" aria-label="Purchase AI Fundamentals Workshop">
@@ -257,33 +230,29 @@
       <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
     </section>
 
-    <section style="margin-top:50px;text-align:center">
+    <section style="margin-top:50px;text-align:center; max-width: 700px;">
       <h2>Need Expert Help? Book a Strategy Session</h2>
       <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-      <a href="#chat-bubble" class="cta-button outline">Chat Now</a>
+      <a href="#chat-bubble" class="cta-button outline" style="margin-right:10px;">Chat Now</a>
       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
   </main>
 
-  <footer>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com">bourgeoisai.com</a></footer>
+  <footer>
+    © 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color: var(--accent-primary); text-decoration:none;">bourgeoisai.com</a>
+  </footer>
 
-  <div id="chat-bubble" aria-label="Toggle chat">AI</div>
-  <div id="chat-container" role="region" aria-live="polite">
-    <div id="chat-window" role="log" aria-relevant="additions">
-      <p><strong>BourgeoisAI:</strong> Hi! I’m BourgeoisAI — your AI assistant. Ask me anything!</p>
-    </div>
-    <form id="chat-form" aria-label="Chat input form">
-      <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" />
-      <button type="submit" aria-label="Send message">➤</button>
-    </form>
+  <div id="chat-bubble" aria-label="Toggle chat" title="Chat with BourgeoisAI">
+    AI
   </div>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
+      // Toggle chatbot visibility
       const chatBubble = document.getElementById("chat-bubble");
-      const chatContainer = document.getElementById("chat-container");
+      const chatContainer = document.getElementById("chatbot-hero");
       chatBubble.addEventListener("click", function () {
-        chatContainer.style.display = chatContainer.style.display === "block" ? "none" : "block";
+        chatContainer.style.display = (chatContainer.style.display === "block") ? "none" : "block";
       });
 
       const chatForm = document.getElementById("chat-form");
@@ -320,5 +289,6 @@
       });
     });
   </script>
+
 </body>
 </html>
