@@ -28,14 +28,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       }
     )
 
+    if (!response.ok) {
+      const errorText = await response.text()
+      console.error('Gemini API error response:', errorText)
+      return res.status(502).json({ error: 'Bad response from Gemini API' })
+    }
+
     const data = await response.json()
     const reply =
       data.candidates?.[0]?.content?.parts?.[0]?.text ||
       'Sorry, I could not generate a response.'
 
-    res.status(200).json({ reply })
+    return res.status(200).json({ reply })
   } catch (err) {
     console.error('Gemini API Error:', err)
-    res.status(500).json({ error: 'Failed to fetch response from Gemini' })
+    return res.status(500).json({ error: 'Failed to fetch response from Gemini' })
   }
 }
