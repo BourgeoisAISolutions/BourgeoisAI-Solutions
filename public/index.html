@@ -18,7 +18,7 @@
       --accent-secondary: #FFFFFF;
       --header-gradient: linear-gradient(135deg, var(--bg-dark), #1B112B);
       --button-bg: var(--accent-primary);
-      --button-hover-bg: #00AACC;
+      --button-hover-bg: #0099CC;
       --card-bg: #1A0F2B;
       --card-border: rgba(0, 204, 255, 0.4);
       --chat-bubble-bg: var(--accent-primary);
@@ -42,11 +42,11 @@
       align-items: center;
       min-height: 100vh;
       padding: 20px 10px 40px;
+      max-width: 960px;
     }
     header {
       text-align: center;
       width: 100%;
-      max-width: 960px;
       padding: 40px 20px 40px;
       color: var(--text-dark);
     }
@@ -65,6 +65,43 @@
       font-weight: 600;
     }
 
+    a, .cta-button {
+      color: var(--accent-primary);
+      background-color: transparent;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 9999px;
+      padding: 13px 28px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      display: inline-block;
+      box-shadow: 0 3px 8px rgba(0, 204, 255, 0.5);
+      user-select: none;
+    }
+    .cta-button {
+      background-color: var(--accent-primary);
+      color: var(--bg-dark);
+      border: none;
+    }
+    .cta-button:hover,
+    a:hover {
+      color: var(--bg-dark);
+      background-color: var(--button-hover-bg);
+      box-shadow: 0 6px 18px rgba(0, 153, 204, 0.8);
+      text-decoration: none;
+    }
+    .cta-button.outline {
+      background-color: transparent;
+      border: 2px solid var(--accent-primary);
+      color: var(--accent-primary);
+      box-shadow: none;
+    }
+    .cta-button.outline:hover {
+      background-color: var(--accent-primary);
+      color: var(--bg-dark);
+      box-shadow: 0 6px 18px rgba(0, 153, 204, 0.8);
+    }
+
     #chatbot-hero {
       width: 100%;
       max-width: 700px;
@@ -77,7 +114,6 @@
       text-align: center;
       margin-bottom: 50px;
     }
-
     #chatbot-hero h1 {
       margin-bottom: 1rem;
     }
@@ -140,20 +176,6 @@
       transform: scale(1.1);
     }
 
-    #chat-container {
-      display: none;
-      position: fixed;
-      bottom: 90px;
-      right: 20px;
-      width: 320px;
-      background: var(--chat-window-bg);
-      border: 1px solid #374151;
-      border-radius: 10px;
-      padding: 12px;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      z-index: 9999;
-      color: white;
-    }
     #chat-window {
       height: 250px;
       overflow-y: auto;
@@ -164,6 +186,8 @@
       font-size: 14px;
       scrollbar-width: thin;
       scrollbar-color: var(--chat-scrollbar-thumb) transparent;
+      background: var(--chat-window-bg);
+      color: white;
     }
     #chat-window::-webkit-scrollbar {
       width: 8px;
@@ -200,6 +224,20 @@
       cursor: pointer;
       margin-top: 0;
     }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      border-top: 1px solid #374151;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+    footer a {
+      color: var(--accent-primary);
+      text-decoration: none;
+      margin: 0 8px;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
@@ -215,15 +253,15 @@
       <h1>Welcome to BourgeoisAI Chatbot</h1>
       <p>Ask me anything about AI automation and productivity!</p>
 
-      <div id="chat-window" role="log" aria-relevant="additions" style="color:white; background:#1A0F2B; border-radius:6px; border:1px solid #374151; height:250px; overflow-y:auto; padding:8px; margin-bottom:10px; font-size:14px;"></div>
+      <div id="chat-window" role="log" aria-relevant="additions"></div>
 
-      <form id="chat-form" aria-label="Chat input form" style="display:flex; gap:6px;">
-        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" style="flex:1; padding:8px; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
-        <button type="submit" aria-label="Send message" style="padding:8px 14px; border:none; border-radius:6px; background:var(--button-bg); color:var(--bg-dark); cursor:pointer; margin-top:0;">➤</button>
+      <form id="chat-form" aria-label="Chat input form">
+        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" />
+        <button type="submit" aria-label="Send message">➤</button>
       </form>
     </section>
 
-    <section id="purchase" class="purchase-section" aria-label="Purchase AI Fundamentals Workshop">
+    <section id="purchase" class="purchase-section">
       <h2>The AI Productivity Blueprint Workshop</h2>
       <p class="price">$29 USD (One-Time Payment)</p>
       <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
@@ -233,13 +271,15 @@
     <section style="margin-top:50px;text-align:center; max-width: 700px;">
       <h2>Need Expert Help? Book a Strategy Session</h2>
       <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-      <a href="#chat-bubble" class="cta-button outline" style="margin-right:10px;">Chat Now</a>
+      <a href="#chat-bubble" class="cta-button outline">Chat Now</a>
       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
   </main>
 
   <footer>
-    © 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color: var(--accent-primary); text-decoration:none;">bourgeoisai.com</a>
+    © 2025 BourgeoisAI Solutions •
+    <a href="https://bourgeoisai.com" target="_blank" rel="noopener noreferrer">bourgeoisai.com</a>•
+    <a href="https://www.linkedin.com/in/your-linkedin-profile" target="_blank" rel="noopener noreferrer">LinkedIn</a>
   </footer>
 
   <div id="chat-bubble" aria-label="Toggle chat" title="Chat with BourgeoisAI">
@@ -248,11 +288,14 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // Toggle chatbot visibility
       const chatBubble = document.getElementById("chat-bubble");
       const chatContainer = document.getElementById("chatbot-hero");
       chatBubble.addEventListener("click", function () {
-        chatContainer.style.display = (chatContainer.style.display === "block") ? "none" : "block";
+        if (chatContainer.style.display === "block") {
+          chatContainer.style.display = "none";
+        } else {
+          chatContainer.style.display = "block";
+        }
       });
 
       const chatForm = document.getElementById("chat-form");
