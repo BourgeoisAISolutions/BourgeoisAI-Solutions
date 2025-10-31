@@ -3,29 +3,37 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BourgeoisAI | AI Automation & Consulting</title>
-  <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners." />
+  <title>BourgeoisAI: AI Automation Masterclass & Consulting | 10x Productivity</title>
+  <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners. Get the AI Fundamentals Workshop today." />
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+    /* Premium: Use strong CSS Variables for easy theming */
     :root {
-      --bg-dark: #0d1222;
-      --text-light: #9ca3af;
+      --bg-dark: #0A122A; /* Deeper, richer dark blue */
+      --text-light: #C4CFE4; 
       --text-dark: white;
-      --header-gradient-from: #22d3ee; /* cyan-400 */
-      --header-gradient-to: #3b82f6;   /* blue-500 */
-      --button-bg: #3b82f6;
+      --accent-cyan: #22d3ee; 
+      --accent-blue: #3b82f6;
+      --header-gradient: linear-gradient(135deg, var(--accent-cyan), var(--accent-blue));
+      --button-bg: var(--accent-blue);
       --button-hover-bg: #2563eb;
-      --button-outline-border: rgba(59, 130, 246, 0.3);
-      --card-bg: #1e293b; /* slate-800 */
-      --card-border: rgba(59, 130, 246, 0.3);
-      --footer-text: var(--text-light);
-      --chat-bubble-bg: var(--button-bg);
-      --chat-bubble-shadow: rgba(0,0,0,0.3);
+      --card-bg: #1A2238; /* Slightly lighter than background for depth */
+      --card-border: rgba(34, 211, 238, 0.2);
+      --chat-bubble-bg: var(--accent-cyan); /* Use the distinct cyan accent */
+      --chat-scrollbar-thumb: var(--accent-blue);
       --chat-window-bg: #111827;
-      --chat-scrollbar-thumb: #2563eb;
+      --chat-bubble-shadow: rgba(34, 211, 238, 0.4);
     }
 
+    /* BEST PRACTICE: Smooth scrolling for internal anchor links */
+    html {
+        scroll-behavior: smooth;
+    }
+    
     body {
       margin: 0;
       font-family: 'Inter', system-ui, sans-serif;
@@ -35,14 +43,14 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
     body.light {
-      background: #f8fafc;
+      background: #f0f4f8; /* Soft light background */
       color: #1e293b;
     }
 
     header {
       text-align: center;
-      padding: 60px 20px 30px;
-      background: linear-gradient(135deg, var(--header-gradient-from), var(--header-gradient-to));
+      padding: 80px 20px 40px; /* Increased padding for premium feel */
+      background: var(--header-gradient);
       color: var(--text-dark);
     }
     body.light header {
@@ -50,10 +58,12 @@
     }
     header h1 {
       margin: 0;
-      font-size: 2.8rem;
+      font-size: 3.5rem; /* Larger, more dominant title */
+      font-weight: 800;
     }
     header p {
       margin: 0.5rem 0 0;
+      font-size: 1.25rem;
     }
     main {
       max-width: 960px;
@@ -61,41 +71,51 @@
       padding: 40px 20px;
       text-align: center;
     }
-    a.button, button {
+    
+    /* PREMIUM: Consolidated button styling */
+    .cta-button {
       background: var(--button-bg);
       color: white;
       border: none;
-      border-radius: 6px;
-      padding: 12px 24px;
+      border-radius: 8px; /* Slightly more modern radius */
+      padding: 14px 30px; /* Increased padding */
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 700; /* Bold text */
       cursor: pointer;
-      transition: background-color 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.2s;
       display: inline-block;
-      margin-top: 15px;
+      margin-top: 20px;
+      font-size: 1.1rem;
     }
-    a.button:hover, button:hover {
+    .cta-button:hover {
       background: var(--button-hover-bg);
+      transform: translateY(-2px); /* Subtle lift effect */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     }
-    button.outline {
+    .cta-button.outline {
       background: transparent;
-      border: 2px solid var(--button-bg);
-      color: var(--button-bg);
+      border: 2px solid var(--accent-blue);
+      color: var(--accent-blue);
+      box-shadow: none;
     }
-    button.outline:hover {
-      background: var(--button-bg);
+    .cta-button.outline:hover {
+      background: var(--accent-blue);
       color: white;
     }
+
     footer {
       text-align: center;
-      padding: 30px 20px;
+      padding: 40px 20px;
       border-top: 1px solid #1f2937;
-      color: var(--footer-text);
+      color: var(--text-light);
+      font-size: 0.9rem;
     }
     footer a {
-      color: var(--button-bg);
+      color: var(--accent-blue);
       text-decoration: none;
     }
+
+    /* Chat bubble styles using the accent color */
     #chat-bubble {
       position: fixed;
       bottom: 20px;
@@ -108,9 +128,9 @@
       align-items: center;
       justify-content: center;
       font-size: 26px;
-      box-shadow: 0 4px 12px var(--chat-bubble-shadow);
+      box-shadow: 0 4px 12px var(--chat-bubble-shadow); 
       cursor: pointer;
-      transition: transform 0.2s;
+      transition: transform 0.2s, box-shadow 0.3s;
       z-index: 9999;
     }
     #chat-bubble:hover {
@@ -171,6 +191,7 @@
       background: var(--button-bg);
       color: white;
       cursor: pointer;
+      margin-top: 0; /* Override cta-button margin */
     }
     /* Dark mode toggle button */
     #dark-mode-toggle {
@@ -199,29 +220,30 @@
     /* Purchase section */
     .purchase-section {
       margin-top: 50px;
+      padding: 30px;
+      background: var(--card-bg); /* Use card background for visual grouping */
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
     }
     .purchase-section h2 {
-      font-size: 1.75rem;
-      color: #22d3ee;
-      font-weight: bold;
+      font-size: 2rem;
+      color: var(--accent-cyan);
+      font-weight: 800;
       margin-bottom: 0.75rem;
     }
     .purchase-section p {
-      max-width: 600px;
+      max-width: 700px;
       margin: auto;
-      color: #cbd5e1;
-      margin-bottom: 1rem;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
     }
-    .purchase-section a.button {
-      background: #2563eb;
-      padding: 12px 24px;
-      border-radius: 6px;
-      text-decoration: none;
-      color: white;
-      font-weight: 600;
-    }
-    .purchase-section a.button:hover {
-      background: #1d4ed8;
+    .purchase-section .price {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--text-dark);
+        margin-bottom: 10px;
+        display: block;
     }
   </style>
 </head>
@@ -230,31 +252,38 @@
 
   <header>
     <h1>BourgeoisAI Solutions</h1>
-    <p>AI Automation • Consulting • Intelligent Learning</p>
+    <p>AI Automation • Intelligent Learning • Expert Consulting</p>
+    <a href="#purchase" class="cta-button">Get Started with AI</a> 
   </header>
 
   <main>
     <section style="text-align:center">
-      <p>BourgeoisAI builds intelligent systems that accelerate learning and automate workflows.
-      Explore AI-powered teaching, automation consulting, and data-driven solutions.</p>
-      <a href="https://bourgeoisai.com" class="button">Visit BourgeoisAI.com</a>
+      <p style="max-width: 800px; margin: 0 auto; font-size: 1.15rem; color: var(--text-light);">
+        BourgeoisAI builds intelligent systems that accelerate learning and automate workflows.
+        Explore our high-performance workshops, automation consulting, and data-driven solutions
+        designed to **10x your professional output**.
+      </p>
     </section>
 
-    <section class="purchase-section" aria-label="Purchase AI Fundamentals Workshop">
-      <h2>AI Fundamentals Workshop</h2>
-      <p>A 40-minute compact high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
-      <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="button">
-        🚀 Purchase AI Fundamentals – $29
+    <section id="purchase" class="purchase-section" aria-label="Purchase AI Fundamentals Workshop">
+      <h2>The AI Productivity Blueprint Workshop</h2>
+      <p class="price">$29 USD (One-Time Payment)</p>
+      <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
+      
+      <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">
+        🚀 Secure Your Copy Now
       </a>
     </section>
 
     <section style="margin-top:50px;text-align:center">
-      <h2>💬 Chat with BourgeoisAI</h2>
-      <p>Ask BourgeoisAI about our services, AI automation, or the Citizenship Course.</p>
+      <h2>💬 Need Expert Help? Book a Strategy Session</h2>
+      <p style="color: var(--text-light);">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
+       <a href="#chat-bubble" class="cta-button outline">Chat Now</a>
+       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
   </main>
 
-  <footer>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com" style="color:#8b5cf6;">bourgeoisai.com</a></footer>
+  <footer>© 2025 BourgeoisAI Solutions • <a href="https://bourgeoisai.com">bourgeoisai.com</a></footer>
 
   <div id="chat-bubble" aria-label="Toggle chat">💬</div>
   <div id="chat-container" role="region" aria-live="polite">
@@ -279,8 +308,10 @@
     saved.forEach(m => appendMessage(m.sender, m.text));
 
     bubble.addEventListener('click', () => {
-      container.style.display = container.style.display === 'none' || container.style.display === '' ? 'block' : 'none';
-      if (container.style.display === 'block') {
+      // Toggle visibility
+      const isVisible = container.style.display === 'block';
+      container.style.display = isVisible ? 'none' : 'block';
+      if (!isVisible) {
         input.focus();
       }
     });
@@ -295,17 +326,20 @@
       input.disabled = true;
 
       try {
-        const res = await fetch('/api/cleo-chat', {
+        // This targets the Vercel Serverless function at /api/cleo-chat.js
+        const res = await fetch('/api/cleo-chat', { 
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ message: text }),
         });
         const data = await res.json();
-        const reply = data.reply || "Sorry, I couldn’t think of a response.";
+        const reply = data.reply || "I'm having a brief technical difficulty. Please use the links above to proceed with your purchase or booking!";
         appendMessage('BourgeoisAI', reply);
         save('BourgeoisAI', reply);
-      } catch {
-        const fallback = "I’m BourgeoisAI — visit bourgeoisai.com for more!";
+      } catch (error) {
+        // Fallback for network issues or unbuilt API
+        console.error("Fetch Error:", error);
+        const fallback = "I'm having a brief technical difficulty. Please use the links above to proceed with your purchase or booking!";
         appendMessage('BourgeoisAI', fallback);
         save('BourgeoisAI', fallback);
       } finally {
