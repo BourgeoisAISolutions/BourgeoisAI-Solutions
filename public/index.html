@@ -238,15 +238,14 @@
         designed to <strong>10x your professional output</strong>.
       </p>
     </section>
-
-    <!-- No demo heading here! Just the videos -->
+    
     <section style="text-align:center;">
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/IIG1WmuFwV4" title="AI Automation Masterclass Preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
-        <div class="video-container">
-          <iframe src="https://www.youtube.com/embed/sB-s2PtCpns" title="AI Demos and Workflows Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/IIG1WmuFwV4" title="AI Automation Masterclass Preview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-container">
+        <iframe src="https://www.youtube.com/embed/sB-s2PtCpns" title="AI Demos and Workflows Overview" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </section>
 
     <section id="purchase" class="purchase-section" aria-label="Purchase AI Fundamentals Workshop">
@@ -261,8 +260,8 @@
     <section style="margin-top:50px;text-align:center">
       <h2>Need Expert Help? Book a Strategy Session</h2>
       <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-       <a href="#chat-bubble" class="cta-button outline">Chat Now</a>
-       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
+      <a href="#chat-bubble" class="cta-button outline">Chat Now</a>
+      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
   </main>
 
@@ -279,6 +278,50 @@
     </form>
   </div>
 
-  <script src="api/cleo-chat.js" defer></script> 
+  <!-- Integrated chatbot frontend script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // Toggle chat window
+      const chatBubble = document.getElementById("chat-bubble");
+      const chatContainer = document.getElementById("chat-container");
+      chatBubble.addEventListener("click", function () {
+        chatContainer.style.display = chatContainer.style.display === "block" ? "none" : "block";
+      });
+
+      // Chat form submit handler
+      const chatForm = document.getElementById("chat-form");
+      const userInput = document.getElementById("user-input");
+      const chatWindow = document.getElementById("chat-window");
+
+      chatForm.addEventListener("submit", async function (e) {
+        e.preventDefault();
+        const message = userInput.value.trim();
+        if (!message) return;
+
+        chatWindow.innerHTML += `<p><strong>You:</strong> ${message}</p>`;
+        userInput.value = "";
+
+        chatWindow.innerHTML += `<p id="ai-typing"><em>AI is typing...</em></p>`;
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+
+        try {
+          const response = await fetch("/api/cleo-chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ message })
+          });
+          const data = await response.json();
+          const typingEl = document.getElementById("ai-typing");
+          if (typingEl) typingEl.remove();
+          chatWindow.innerHTML += `<p><strong>BourgeoisAI:</strong> ${data.reply}</p>`;
+          chatWindow.scrollTop = chatWindow.scrollHeight;
+        } catch (error) {
+          const typingEl = document.getElementById("ai-typing");
+          if (typingEl) typingEl.remove();
+          chatWindow.innerHTML += `<p><strong>BourgeoisAI:</strong> Sorry, something went wrong.</p>`;
+        }
+      });
+    });
+  </script>
 </body>
 </html>
