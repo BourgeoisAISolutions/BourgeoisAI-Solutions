@@ -3,10 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>BourgeoisAI: Chatbot Hero</title>
+  <title>BourgeoisAI: Cinematic Hero</title>
   <meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners. Get the AI Fundamentals Workshop today." />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
 
   <style>
@@ -16,14 +14,11 @@
       --text-light: #C0DEFF;
       --accent-primary: #00CCFF;
       --accent-secondary: #FFFFFF;
-      --header-gradient: linear-gradient(135deg, var(--bg-dark), #1B112B);
+      --header-gradient: radial-gradient(circle at top left, #1B112B, #0F0A19);
       --button-bg: var(--accent-primary);
       --button-hover-bg: #0099CC;
       --card-bg: #1A0F2B;
       --card-border: rgba(0, 204, 255, 0.4);
-      --chat-window-bg: #1A0F2B;
-      --chat-scrollbar-thumb: #D0D8E8;
-      --chat-placeholder: #A8B8C7;
     }
 
     body {
@@ -31,18 +26,25 @@
       font-family: 'Inter', sans-serif;
       background: var(--bg-dark);
       color: var(--text-dark);
-      line-height: 1.6;
+      overflow-x: hidden;
     }
 
     header {
       background: var(--header-gradient);
       padding: 2rem;
       text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
     }
 
     header h1 {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-shadow: 0 0 10px rgba(0, 204, 255, 0.4);
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
     }
 
     .cta-button {
@@ -54,11 +56,49 @@
       border-radius: 6px;
       text-decoration: none;
       font-weight: 600;
-      transition: background 0.3s ease;
+      box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
+      transition: background 0.3s ease, transform 0.3s ease;
     }
 
     .cta-button:hover {
       background: var(--button-hover-bg);
+      transform: scale(1.05);
+    }
+
+    #bourgeoisai-hero {
+      text-align: center;
+      padding: 60px 20px;
+      background: radial-gradient(circle at center, #1B112B 0%, #0F0A19 100%);
+      animation: fadeInUp 1.5s ease-out;
+    }
+
+    #bourgeoisai-hero img {
+      max-width: 320px;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(0, 204, 255, 0.4);
+      margin-bottom: 30px;
+      animation: pulse 3s infinite;
+    }
+
+    #bourgeoisai-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+    }
+
+    #bourgeoisai-hero p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .cta-group {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 30px;
     }
 
     main {
@@ -71,47 +111,23 @@
       margin-bottom: 3rem;
     }
 
-    #bourgeoisai-hero {
-      text-align: center;
-      padding: 60px 20px;
-    }
-
-    #bourgeoisai-hero img {
-      max-width: 100%;
-      height: auto;
+    #chatbot-hero {
+      background: var(--card-bg);
+      padding: 2rem;
       border-radius: 12px;
-      box-shadow: 0 0 20px rgba(0, 204, 255, 0.3);
-      margin-bottom: 40px;
-    }
-
-    #bourgeoisai-hero h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    #bourgeoisai-hero p {
-      font-size: 1.1rem;
-      color: var(--text-light);
-      margin-bottom: 20px;
-    }
-
-    #bourgeoisai-hero .cta-group {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      margin-top: 30px;
+      box-shadow: 0 0 20px rgba(0, 204, 255, 0.2);
+      animation: fadeInUp 1.5s ease-out;
     }
 
     #chat-window {
-      background: var(--chat-window-bg);
+      background: #111827;
       border-radius: 6px;
       border: 1px solid var(--card-border);
       height: 250px;
       overflow-y: auto;
       padding: 1rem;
       font-size: 14px;
+      color: var(--text-light);
     }
 
     #chat-form {
@@ -129,22 +145,15 @@
       color: white;
     }
 
-    #chat-bubble {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--accent-primary);
-      color: var(--bg-dark);
-      padding: 0.75rem 1rem;
-      border-radius: 50px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 0 10px var(--accent-primary);
-      transition: transform 0.3s ease;
-    }
-
-    #chat-bubble:hover {
-      transform: scale(1.05);
+    #email-support input,
+    #email-support textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      background: #1f2937;
+      color: white;
     }
 
     footer {
@@ -160,37 +169,33 @@
       margin: 0 0.5rem;
     }
 
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 1.5rem;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
 
-      .cta-button {
-        padding: 0.5rem 1rem;
-      }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-      #bourgeoisai-hero h1 {
-        font-size: 2rem;
-      }
-
-      #bourgeoisai-hero p {
-        font-size: 1rem;
-      }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>BourgeoisAI Solutions</h1>
-    <p>AI Automation • Intelligent Learning • Expert Consulting</p>
+    <h1>BourgeoisAI</h1>
+    <p>Your Edge in the Age of AI</p>
     <a href="#purchase" class="cta-button">Get Started with AI</a>
   </header>
 
   <section id="bourgeoisai-hero">
-    <img src="/public/hero.png" alt="BourgeoisAI Butterfly Hero" />
-    <h1>BourgeoisAI</h1>
-    <p>Your Edge in the Age of AI</p>
+    <img src="/public/hero.png" alt="Glowing Butterfly and B Emblem" />
+    <h1>BourgeoisAI Solutions</h1>
     <p>Cinematic education · Concierge chatbot · Consult funnels · SaaS automation · Enterprise vaults</p>
     <div class="cta-group">
       <a href="#masterclass" class="cta-button">Masterclass</a>
@@ -200,15 +205,13 @@
   </section>
 
   <main>
-    <section id="chatbot-hero" aria-label="Chatbot interface">
+    <section id="chatbot-hero">
       <h2>Welcome to BourgeoisAI</h2>
       <p>Ask me anything about AI automation and productivity!</p>
-
-      <div id="chat-window" role="log" aria-live="polite"></div>
-
+      <div id="chat-window">✨ Chatbot ready. Type your question below to begin.</div>
       <form id="chat-form">
-        <input type="text" id="user-input" placeholder="Type your message..." aria-label="User input" autocomplete="off" />
-        <button type="submit" aria-label="Send message">➤</button>
+        <input type="text" id="user-input" placeholder="Type your message..." />
+        <button type="submit" class="cta-button">➤</button>
       </form>
     </section>
 
@@ -224,18 +227,8 @@
       <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
       <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
     </section>
-  </main>
 
-  <footer>
-    © 2025 BourgeoisAI Solutions •
-    <a href="https://bourgeoisai.com" target="_blank">bourgeoisai.com</a>•
-    <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank">LinkedIn</a>
-  </footer>
-
-  <div id="chat-bubble" aria-label="Toggle chat" title="Chat with BourgeoisAI">AI</div>
-
-  <script>
-    const chatBubble = document.getElementById("chat-bubble");
-    const chatContainer = document.getElementById("chatbot-hero");
-
-    chatBubble.addEventListener("
+    <section id="email-support">
+      <h2>Contact BourgeoisAI Support</h2>
+      <p style="color: var(--text-light); font-weight: 600;">Submit a message directly to our support inbox. We'll respond within 24 hours.</p>
+       [9F742443-6C92-4C44-BF58-8F5A7C53B6F1](https://github.com/szerintedmi/roadmap-radar-chart/tree/45ee5f9f7a1d44100313358e369abb025b935cea/README.md?citationMarker=9F742443-6C92-4C44-BF58-8F5A7C53B6F1&citationId=953CF2F3-A570-4C61-81AC-E88973803677&citationTitle=github.com&citationFullTitle=github.com&chatItemId=6g6ADVK74FpZpAnFhWW8q)<form action="mailto:bourgeoisaisupport@proton.me" method="POST" enctype="text
