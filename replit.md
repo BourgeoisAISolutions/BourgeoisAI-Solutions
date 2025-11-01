@@ -68,12 +68,23 @@ Preferred communication style: Simple, everyday language.
   - Edge network distribution
 
 ### Runtime Dependencies
-- **express** (^4.21.2): HTTP server framework for local development
+- **express** (^4.18.2): HTTP server framework for local development
 - **openai** (^4.0.0): Official OpenAI Node.js SDK for API communication
+- **resend** (^4.0.0): Email delivery service for contact form submissions
+
+### Email Integration
+- **Resend API**: Transactional email service for the contact/support form
+  - Authentication: Managed via Replit connection settings (automatic key rotation)
+  - Recipient: bourgeoisaisupport@proton.me
+  - Security: HTML sanitization prevents injection attacks, server-side email validation
+  - Form fields: Name, email address, message
+  - API endpoint: `/api/send-email`
 
 ### Environment Variables
 - `OPENAI_API_KEY`: Required for AI chat functionality
 - `PORT`: Optional, defaults to 5000 for local development
+- `REPLIT_CONNECTORS_HOSTNAME`: Automatically provided by Replit for connector authentication
+- `REPL_IDENTITY` / `WEB_REPL_RENEWAL`: Automatically provided for Resend connection authentication
 
 ### Note on Database
 No database is currently implemented. Chat history is stored client-side only via localStorage. This means:
