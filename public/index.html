@@ -28,6 +28,22 @@
       color: var(--text-dark);
       overflow-x: hidden;
       line-height: 1.6;
+      min-height: 100vh;
+    }
+    .full-screen-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      z-index: -1;
+    }
+    .full-screen-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.5;
     }
     h1, h2, h3 {
       font-weight: 700;
@@ -35,17 +51,22 @@
     }
     h1 { font-size: 2.5rem; }
     h2 { font-size: 1.6rem; }
-    a { text-decoration: none; color: var(--accent-primary); }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    a {
+      text-decoration: none;
+      color: var(--accent-primary);
+    }
+    a:hover,
+    a:focus {
+      color: var(--accent-primary);
+      outline: 2px solid var(--accent-primary);
+      outline-offset: 2px;
     }
     #hero-section {
-      background: linear-gradient(180deg, var(--bg-hero-start) 0%, var(--bg-hero-end) 80%);
-      padding: 2rem 1rem 0;
-      text-align: center;
-      min-height: 400px;
       position: relative;
+      z-index: 10;
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+      min-height: 100px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -57,7 +78,7 @@
       gap: 1.5rem;
       padding: 0.5rem 0;
       border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       width: 100%;
     }
     .top-nav a {
@@ -67,7 +88,7 @@
       border-radius: 4px;
       transition: color 0.3s;
     }
-    .top-nav a:hover {
+    .top-nav a:hover, .top-nav a:focus {
       color: var(--accent-primary);
     }
     .nav-auth {
@@ -75,156 +96,30 @@
       background: var(--button-dark-bg);
       border-radius: 4px;
       padding: 0.5rem 0.75rem;
-    }
-    .logo-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 1rem;
-      margin-bottom: 2rem;
-      position: relative;
-      width: 100%;
-      max-width: 800px;
-      padding-left: 1rem;
-    }
-    .main-logo-heading {
-      font-size: 2.5rem;
-      letter-spacing: 0.25rem;
-      color: var(--text-dark);
-      text-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
-      margin-bottom: 0.5rem;
-      margin-top: 0;
-    }
-    .main-logo-subheading {
-      color: var(--text-light);
-      font-size: 1.1rem;
-      margin-top: 0;
-      margin-bottom: 0;
-    }
-    .large-b {
-      font-size: 4rem;
-      font-weight: 900;
-      color: var(--accent-primary); 
-      line-height: 1;
-      text-shadow: 0 0 15px var(--accent-glow);
-      margin-top: 0;
-      margin-bottom: 0;
-      position: relative;
-      z-index: 2;
-    }
-    .butterfly-image {
-      width: 200px;
-      height: auto;
-      margin-right: 20px;
-      z-index: 1;
-    }
-    .b-and-text-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      position: relative;
-      z-index: 2;
-    }
-    .hero-main-title {
-      font-size: 2.2rem; 
-      font-weight: 800; 
-      color: var(--text-dark); 
-      margin-bottom: 0.5rem; 
-      text-align: left;
-      line-height: 1.2;
-    }
-    .hero-tagline {
-      font-size: 1rem; 
-      color: var(--text-light); 
-      margin-bottom: 2rem; 
-      text-align: left;
-    }
-    @media (max-width: 768px) {
-      .logo-container {
-        flex-direction: column;
-        padding-left: 0;
-      }
-      .butterfly-image {
-        margin-right: 0;
-        margin-bottom: 1rem;
-        width: 150px;
-      }
-      .b-and-text-wrapper {
-        align-items: center;
-        text-align: center;
-      }
-    }
-    .card-action-button {
-      display: inline-block;
-      padding: 0.75rem 1.5rem;
-      background: var(--card-bg); 
-      color: var(--text-dark); 
-      border-radius: 6px;
-      text-decoration: none;
       font-weight: 600;
-      border: 1px solid var(--text-light); 
-      transition: background 0.3s ease, border-color 0.3s ease;
-      cursor: pointer;
-      text-align: center;
-    }
-    .card-action-button:hover {
-      background: #252525;
-      border-color: var(--accent-primary); 
-    }
-    .menu-button {
-      background: var(--button-dark-bg);
-      color: var(--text-dark);
-      border: 1px solid var(--accent-primary); 
-      padding: 0.75rem 2rem;
-      font-weight: 600;
-      box-shadow: none;
-      transition: background 0.3s ease, border-color 0.3s ease;
-    }
-    .menu-button:hover {
-      background: #444444;
-      border-color: var(--button-hover-bg); 
-    }
-    .menu-button-active {
-      background: var(--button-light-bg); 
-      color: var(--bg-primary); 
-      border: none;
-      padding: 0.75rem 2rem;
-      font-weight: 700;
-      box-shadow: 0 0 10px rgba(192, 192, 192, 0.4); 
-      transition: background 0.3s ease;
-    }
-    .menu-button-active:hover {
-      background: white;
-    }
-    .button-row {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      padding: 0 1rem 2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      flex-wrap: wrap; 
     }
     .content-grid {
+      position: relative;
+      z-index: 10;
       display: grid;
-      grid-template-columns: 1fr; 
+      grid-template-columns: 1fr;
       gap: 2rem;
-      padding: 2rem 1rem;
+      padding: 12rem 1rem 2rem;
       max-width: 1000px;
       margin: 0 auto;
     }
     @media (min-width: 768px) {
       .content-grid {
-        grid-template-columns: 1fr 1fr; 
-        padding: 4rem 2rem;
+        grid-template-columns: 1fr 1fr;
+        padding: 12rem 2rem 4rem;
       }
     }
     .card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
+      background: none;
+      border: none;
+      box-shadow: none;
       border-radius: 12px;
       padding: 2rem;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       display: flex;
       flex-direction: column;
     }
@@ -233,18 +128,18 @@
       font-weight: 700;
       margin-top: 0;
       color: var(--text-dark);
-      border-bottom: 2px solid var(--accent-primary); 
+      border-bottom: 2px solid var(--accent-primary);
       padding-bottom: 0.5rem;
       margin-bottom: 1rem;
     }
     .card-footer-button-container {
-      margin-top: auto; 
+      margin-top: auto;
       align-self: flex-start;
     }
     .chat-card-input-group {
       display: flex;
       align-items: center;
-      background: var(--input-bg);
+      background: rgba(43, 43, 43, 0.8);
       border-radius: 6px;
       border: 1px solid #555;
       padding: 0.5rem 0.75rem;
@@ -263,19 +158,19 @@
     }
     .chat-card-input-group button {
       background: transparent;
-      color: var(--accent-primary); 
+      color: var(--accent-primary);
       border: none;
       cursor: pointer;
       padding: 0.5rem;
       transition: color 0.3s;
     }
-    .chat-card-input-group button:hover {
-      color: var(--button-hover-bg); 
+    .chat-card-input-group button:hover, .chat-card-input-group button:focus {
+      color: var(--button-hover-bg);
     }
     .chat-history {
       height: 120px;
       overflow-y: auto;
-      background: #111;
+      background: rgba(17, 17, 17, 0.7);
       border-radius: 4px;
       padding: 0.75rem;
       margin-bottom: 1rem;
@@ -286,7 +181,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: var(--input-bg);
+      background: rgba(43, 43, 43, 0.8);
       border: 1px solid #555;
       border-radius: 6px;
       padding: 0.75rem;
@@ -298,6 +193,8 @@
       color: var(--text-light);
     }
     footer {
+      position: relative;
+      z-index: 10;
       text-align: center;
       padding: 2rem 1rem;
       font-size: 0.85rem;
@@ -313,33 +210,24 @@
   </style>
 </head>
 <body>
-  <section id="hero-section">
-    <nav class="top-nav">
+  <!-- Fixed Background Element - Sits behind all content -->
+  <div class="full-screen-bg" role="img" aria-label="BourgeoisAI Background Texture">
+    <img src="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" alt="" aria-hidden="true" />
+  </div>
+
+  <header id="hero-section" role="banner">
+    <nav class="top-nav" role="navigation" aria-label="Primary navigation">
       <a href="#">Get Started with AI</a>
       <a href="#masterclass-card">Masterclass</a>
       <a href="#concierge-card">Concierge</a>
       <a href="#consulting-card">Consulting</a>
       <a href="#" class="nav-auth">Coait Now</a>
     </nav>
-    <div class="logo-container">
-      <img src="https://www.dropbox.com/scl/fi/q5hwm5h9d6ji6ex53i98w/hero.png?raw=1" alt="BourgeoisAI Butterfly" class="butterfly-image" />
-      <div class="b-and-text-wrapper">
-        <p class="hero-main-title">BourgeoisAI<br>Solutions</p>
-        <p class="hero-tagline">AI Automation • Intelligent Learning • Expert Consulting</p>
-        <div class="large-b">B</div>
-        <h1 class="main-logo-heading">BOURGEOISAI</h1>
-        <p class="main-logo-subheading">Your Edge in the Age of AI</p>
-      </div>
-    </div>
-    <div class="button-row">
-      <a href="#masterclass-card" class="menu-button">Masterclass</a>
-      <a href="#concierge-card" class="menu-button-active">Concierge</a>
-      <a href="#consulting-card" class="menu-button">Consulting</a>
-    </div>
-  </section>
-  <main class="content-grid">
-    <section id="masterclass-card" class="card">
-      <h2>Fundamentals Now</h2>
+  </header>
+
+  <main class="content-grid" id="main-content">
+    <section id="masterclass-card" class="card" role="region" aria-labelledby="masterclass-heading" tabindex="-1">
+      <h2 id="masterclass-heading">Fundamentals Now</h2>
       <p style="color:var(--text-light); margin-bottom: 2rem;">
         Unlock your potential with our foundational AI workshop. Learn to automate workflows, expand income streams, and reclaim your creative time.
       </p>
@@ -350,30 +238,37 @@
         <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="card-action-button">Secure Your Copy Now</a>
       </div>
     </section>
-    <section id="concierge-card" class="card">
-      <h2>Chat Form</h2>
+
+    <section id="concierge-card" class="card" role="region" aria-labelledby="concierge-heading" tabindex="-1">
+      <h2 id="concierge-heading">Chat Form</h2>
       <p style="color:var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
         Ask anything about AI automation and productivity.
       </p>
-      <div class="chat-history">
+      <div class="chat-history" aria-live="polite" aria-atomic="false" role="log">
         <p style="color:var(--accent-primary);">✨ Concierge AI: How may I assist you with automation?</p>
       </div>
       <form id="chat-form" style="display:block;">
         <div class="chat-card-input-group">
-          <input type="text" id="user-input" placeholder="Type your message..." />
-          <button type="submit" aria-label="Search">🔍</button>
+          <label for="user-input" class="sr-only">Your message</label>
+          <input type="text" id="user-input" placeholder="Type your message..." aria-describedby="chat-instructions" />
+          <button type="submit" aria-label="Send message">🔍</button>
         </div>
       </form>
-      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="book-call-link">
+      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="book-call-link" role="button">
         Book a Call
-        <span>▶</span>
+        <span aria-hidden="true">▶</span>
       </a>
-      <div class="card-footer-button-container">
+      <audio controls style="width: 100%; margin-top: 1rem;" aria-label="AI Mastery for Busy Professionals demo audio">
+        <source src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762010749/AI_Mastery_for_Busy_Professionals_Demo_vpkoif.m4a" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
+      <div class="card-footer-button-container" style="margin-top: 1.5rem;">
         <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="card-action-button">Book a Call</a>
       </div>
     </section>
-    <section id="email-support-1" class="card">
-      <h2>Email Support</h2>
+
+    <section id="email-support-1" class="card" role="region" aria-labelledby="email-support-heading" tabindex="-1">
+      <h2 id="email-support-heading">Email Support</h2>
       <p style="color:var(--text-light); margin-bottom: 2rem;">
         Have questions or need assistance? Our dedicated support team is here to help. Send us a message and we'll get back to you promptly.
       </p>
@@ -384,16 +279,18 @@
       </div>
     </section>
   </main>
-  <footer>
+
+  <footer role="contentinfo">
     <p>
       Copyright with AI - Intelligenis AI Solutions
     </p>
     <p>
-      <a href="https://bourgeoisai.com" target="_blank">© bourgeoisai.com</a>
+      <a href="https://bourgeoisai.com" target="_blank" rel="noopener noreferrer">© bourgeoisai.com</a>
       |
-      <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank">LinkedIn</a>
+      <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </p>
   </footer>
+
   <script>
     document.getElementById('chat-form').addEventListener('submit', function(e) {
       e.preventDefault();
@@ -407,12 +304,12 @@
         userP.textContent = 'You: ' + userMessage;
         chatHistory.appendChild(userP);
         setTimeout(() => {
-            const aiP = document.createElement('p');
-            aiP.style.textAlign = 'left';
-            aiP.style.color = 'var(--accent-primary)'; 
-            aiP.textContent = 'Concierge AI: I received your query! Please click "Book a Call" for detailed assistance.';
-            chatHistory.appendChild(aiP);
-            chatHistory.scrollTop = chatHistory.scrollHeight;
+          const aiP = document.createElement('p');
+          aiP.style.textAlign = 'left';
+          aiP.style.color = 'var(--accent-primary)';
+          aiP.textContent = 'Concierge AI: I received your query! Please click "Book a Call" for detailed assistance.';
+          chatHistory.appendChild(aiP);
+          chatHistory.scrollTop = chatHistory.scrollHeight;
         }, 800);
         input.value = '';
         chatHistory.scrollTop = chatHistory.scrollHeight;
