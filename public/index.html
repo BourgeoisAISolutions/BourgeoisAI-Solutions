@@ -1,10 +1,25 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>BourgeoisAI: Cinematic Homepage</title>
+    <meta name="description" content="BourgeoisAI - Unlock your potential with AI Fundamentals. Learn automation, productivity, and consulting with AI to expand income streams and reclaim creative time." />
+    <meta name="keywords" content="AI Fundamentals, AI workshop, productivity, automation, consulting, BourgeoisAI" />
+    <meta name="author" content="Thomas Bourgeois" />
+    <meta property="og:title" content="BourgeoisAI" />
+    <meta property="og:description" content="Unlock your potential with AI Fundamentals workshop and consulting services from BourgeoisAI." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bourgeoisai.com" />
+    <meta property="og:image" content="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="BourgeoisAI" />
+    <meta name="twitter:description" content="Unlock your potential with AI Fundamentals workshop and consulting services from BourgeoisAI." />
+    <meta name="twitter:image" content="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" />
+    <link rel="canonical" href="https://bourgeoisai.com" />
     <style>
+      /* Variables */
       :root {
         --bg-primary: #0a0a0e;
         --bg-secondary: #121217;
@@ -21,14 +36,41 @@
         --button-dark-bg: #333333;
         --button-light-bg: #d0d0d0;
       }
+  
+      /* Global */
       body {
         margin: 0;
         font-family: "Inter", sans-serif;
         background: var(--bg-primary);
         color: var(--text-dark);
         overflow-x: hidden;
-        line-height: 1.6;
+        line-height: 1.5;
+        font-size: 16px;
         min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1, h2, h3 {
+        font-weight: 700;
+        margin: 0.5rem 0;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      a {
+        text-decoration: none;
+        color: var(--accent-primary);
+        transition: color 0.3s ease;
+      }
+      a:hover,
+      a:focus {
+        color: var(--accent-primary);
+        outline: 2px solid var(--accent-primary);
+        outline-offset: 2px;
       }
       .full-screen-bg {
         position: fixed;
@@ -45,54 +87,33 @@
         object-fit: cover;
         opacity: 0.5;
       }
-      h1,
-      h2,
-      h3 {
-        font-weight: 700;
-        margin: 0.5rem 0;
-      }
-      h1 {
-        font-size: 2.5rem;
-      }
-      h2 {
-        font-size: 1.6rem;
-      }
-      a {
-        text-decoration: none;
-        color: var(--accent-primary);
-        transition: color 0.3s;
-      }
-      a:hover,
-      a:focus {
-        color: var(--accent-primary);
-        outline: 2px solid var(--accent-primary);
-        outline-offset: 2px;
-      }
       #hero-section {
         position: relative;
         z-index: 10;
-        padding: 2rem 1rem 1rem;
+        padding: 1.5rem 1rem 1rem;
         text-align: center;
-        min-height: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
       }
+  
+      /* Navigation */
       .top-nav {
         display: flex;
+        flex-wrap: wrap;
         justify-content: center;
-        gap: 1.5rem;
-        padding: 0.5rem 0;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-        margin-bottom: 1rem;
-        width: 100%;
       }
       .top-nav a {
         color: var(--text-light);
         font-weight: 600;
-        padding: 0.5rem 0.75rem;
-        border-radius: 4px;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
       }
       .top-nav a:hover,
       .top-nav a:focus {
@@ -101,72 +122,72 @@
       .nav-auth-purchase {
         background: #c0c0c0;
         color: #181920 !important;
-        font-size: 1.1rem;
+        font-size: 1rem;
         font-weight: 700;
-        padding: 0.75rem 1.25rem;
-        border-radius: 7px;
-        box-shadow: 0 2px 7px rgba(192, 192, 192, 0.12);
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(192, 192, 192, 0.2);
         border: none;
         outline: none;
-        transition: background 0.2s, color 0.2s;
-        text-decoration: none;
+        transition: background 0.3s, color 0.3s;
         display: inline-block;
+        flex-shrink: 0;
       }
       .nav-auth-purchase:hover,
       .nav-auth-purchase:focus {
         background: #e2e2e2;
         color: #181920;
       }
+  
+      /* Content Grid */
       .content-grid {
         position: relative;
         z-index: 10;
         display: grid;
         grid-template-columns: 1fr;
-        gap: 2rem;
-        padding: 12rem 1rem 2rem;
-        max-width: 1000px;
+        gap: 1.5rem;
+        padding: 8rem 1rem 2rem;
+        max-width: 720px;
         margin: 0 auto;
       }
-      @media (min-width: 768px) {
-        .content-grid {
-          grid-template-columns: 1fr 1fr;
-          padding: 12rem 2rem 4rem;
-        }
-      }
+  
+      /* Cards */
       .card {
         background: none;
         border: none;
         box-shadow: none;
         border-radius: 12px;
-        padding: 2rem;
+        padding: 1.5rem 1rem;
         display: flex;
         flex-direction: column;
       }
       .card h2 {
-        font-size: 1.6rem;
+        font-size: 1.3rem;
         font-weight: 700;
         margin-top: 0;
         color: var(--text-dark);
         border-bottom: 2px solid var(--accent-primary);
-        padding-bottom: 0.5rem;
+        padding-bottom: 0.35rem;
         margin-bottom: 1rem;
       }
       .card-footer-button-container {
         margin-top: auto;
         align-self: flex-start;
       }
+  
+      /* Buttons */
       .cta-button {
         background: #c0c0c0;
         color: #181920;
-        padding: 0.75rem 1.5rem;
-        border-radius: 7px;
+        padding: 0.65rem 1.25rem;
+        border-radius: 9px;
         font-weight: 700;
-        font-size: 1.1rem;
+        font-size: 1rem;
         border: none;
         cursor: pointer;
         display: inline-block;
         transition: background 0.3s, color 0.3s;
-        box-shadow: 0 2px 7px rgba(192,192,192,0.12);
+        box-shadow: 0 2px 7px rgba(192,192,192,0.15);
         text-decoration: none;
       }
       .cta-button:hover,
@@ -174,11 +195,13 @@
         background: #e2e2e2;
         color: #181920;
       }
+  
+      /* Chat input styling */
       .chat-card-input-group {
         display: flex;
         align-items: center;
-        background: rgba(43, 43, 43, 0.8);
-        border-radius: 6px;
+        background: rgba(43, 43, 43, 0.85);
+        border-radius: 8px;
         border: 1px solid #555;
         padding: 0.5rem 0.75rem;
         margin-bottom: 1rem;
@@ -189,63 +212,73 @@
         border: none;
         color: var(--text-dark);
         padding: 0.5rem 0.5rem;
+        font-size: 1rem;
         outline: none;
       }
       .chat-card-input-group input::placeholder {
-        color: #777;
+        color: #999;
       }
       .chat-card-input-group button {
         background: transparent;
         color: var(--accent-primary);
         border: none;
         cursor: pointer;
-        padding: 0.5rem;
+        padding: 0.65rem;
+        font-size: 1.15rem;
         transition: color 0.3s;
       }
       .chat-card-input-group button:hover,
       .chat-card-input-group button:focus {
         color: var(--button-hover-bg);
       }
+  
       .chat-history {
-        height: 120px;
+        height: 140px;
         overflow-y: auto;
-        background: rgba(17, 17, 17, 0.7);
-        border-radius: 4px;
+        background: rgba(17, 17, 17, 0.75);
+        border-radius: 8px;
         padding: 0.75rem;
         margin-bottom: 1rem;
-        font-size: 0.9rem;
+        font-size: 1rem;
         border: 1px solid #333;
       }
+  
       .book-call-link {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: rgba(43, 43, 43, 0.8);
+        background: rgba(43, 43, 43, 0.85);
         border: 1px solid #555;
-        border-radius: 6px;
-        padding: 0.75rem;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
         color: var(--text-dark);
         font-weight: 600;
         margin-bottom: 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
       }
       .book-call-link span {
         color: var(--text-light);
+        font-size: 1.25rem;
+        line-height: 1;
       }
+  
       audio,
       video {
         width: 100%;
         max-width: 600px;
-        background: rgba(43, 43, 43, 0.8);
-        border-radius: 6px;
+        background: rgba(43, 43, 43, 0.85);
+        border-radius: 8px;
         padding: 0.5rem;
         box-sizing: border-box;
       }
+  
       footer {
         position: relative;
         z-index: 10;
         text-align: center;
-        padding: 2rem 1rem;
-        font-size: 0.85rem;
+        padding: 1.8rem 1rem;
+        font-size: 0.9rem;
         background: var(--bg-secondary);
         border-top: 1px solid var(--card-border);
         margin-top: 2rem;
@@ -253,7 +286,41 @@
       }
       footer a {
         color: var(--accent-primary);
-        margin: 0 0.5rem;
+        margin: 0 0.4rem;
+        font-size: 0.9rem;
+      }
+  
+      /* Responsive Media Queries */
+      @media (min-width: 600px) {
+        body {
+          font-size: 17px;
+        }
+        .content-grid {
+          max-width: 900px;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          padding: 10rem 2rem 3rem;
+          gap: 2rem;
+        }
+      }
+      @media (min-width: 900px) {
+        body {
+          font-size: 18px;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        .top-nav a {
+          font-size: 1.1rem;
+          padding: 0.75rem 1.25rem;
+        }
+        .nav-auth-purchase {
+          font-size: 1.2rem;
+          padding: 0.75rem 1.5rem;
+          border-radius: 10px;
+        }
       }
     </style>
   </head>
@@ -302,14 +369,14 @@
         </p>
         <div
           style="
-            font-size: 2.5rem;
+            font-size: 2rem;
             font-weight: 800;
             color: var(--accent-primary);
             margin-bottom: 1rem;
           "
         >
           $29
-          <span style="font-size: 1.1rem; color: var(--text-light)">USD</span>
+          <span style="font-size: 1rem; color: var(--text-light)">USD</span>
         </div>
         <div class="card-footer-button-container">
           <a
@@ -333,7 +400,7 @@
         <p
           style="
             color: var(--text-light);
-            font-size: 0.9rem;
+            font-size: 1rem;
             margin-bottom: 1rem;
           "
         >
@@ -559,7 +626,8 @@
             const result = await response.json();
 
             if (response.ok && result.success) {
-              statusDiv.textContent = "✓ Message sent successfully! We'll get back to you soon.";
+              statusDiv.textContent =
+                "✓ Message sent successfully! We'll get back to you soon.";
               statusDiv.style.color = "#4caf50";
               e.target.reset();
             } else {
@@ -568,7 +636,8 @@
               statusDiv.style.color = "#f44336";
             }
           } catch (error) {
-            statusDiv.textContent = "✗ Network error. Please check your connection and try again.";
+            statusDiv.textContent =
+              "✗ Network error. Please check your connection and try again.";
             statusDiv.style.color = "#f44336";
           } finally {
             submitButton.textContent = originalButtonText;
