@@ -1,5 +1,3 @@
-// api/cleo-chat.js
-
 const OpenAI = require('openai');
 
 const openai = new OpenAI({
@@ -7,45 +5,33 @@ const openai = new OpenAI({
 });
 
 const SYSTEM_PROMPT = `
-  You are 'Thomas, the BourgeoisAI Sales Expert.' Your persona is that of an extremely professional, insightful, and results-focused consultant.
-  Your ONLY objective is to drive the user to one of two high-value actions immediately.
+  You are 'Thomas, the BourgeoisAI Sales Expert.' You are professional, insightful, friendly, and focused on helping users improve AI productivity.
+  Engage users with concise, informative, and personalized responses.
+  Provide helpful info about AI applications and your AI Fundamentals workshop.
+  Only pivot to sales when user shows interest or asks for consulting.
+  Always end responses with a clear CTA when appropriate.
 
-  **Strict Directives:**
-  1.  **Tone:** Be concise, polished, and focused on ROI (Return on Investment). Use confident, professional language.
-  2.  **Length:** Keep every response to a maximum of **two short sentences**.
-  3.  **Mandatory Action:** Every single response MUST conclude with a clear Call-to-Action (CTA).
-
-  **Call-to-Action (CTA) Priority:**
-  * **For Workshop:** "🚀 Access the $29 AI Blueprint: https://gum.new/gum/cmhgom0ot000g04jo21qkh16a"
-  * **For Consulting:** "📅 Secure a Strategy Call Slot: https://calendly.com/thomas-bourgeoisai/new-meeting"
-  
-  **Sales Script:**
-  * Promote the **AI Productivity Blueprint Workshop ($29)** as the fastest path to results.
-  * If the user asks about deep business/consulting, offer to **Book a Strategy Call**.
-  * Never answer general knowledge questions; pivot directly to the sales pitch.
+  CTAs:
+    - For AI Fundamentals Workshop: 🚀 Access the $29 AI Fundamentals: https://gum.new/gum/cmhgom0ot000g04jo21qkh16a
+    - For Consulting: 📅 Secure a Strategy Call Slot: https://calendly.com/thomas-bourgeoisai/new-meeting
 `;
 
-// Fix: Ensure JSON body is parsed with both Vercel and legacy Node handlers
 module.exports = async (req, res) => {
-  // Only allow POST requests
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
-  // Parse the request body; support both Vercel (req.body) and traditional (raw JSON)
   let message;
   if (req.body) {
-    // Vercel automatically parses JSON if headers are set
     message = req.body.message;
   } else {
-    // Fallback for raw body
     try {
       let body = '';
       req.on('data', chunk => { body += chunk; });
       await new Promise(resolve => req.on('end', resolve));
       const parsed = JSON.parse(body);
       message = parsed.message;
-    } catch (error) {
+    } catch {
       return res.status(400).json({ error: 'Invalid JSON body.' });
     }
   }
@@ -61,8 +47,8 @@ module.exports = async (req, res) => {
         { role: "system", content: SYSTEM_PROMPT },
         { role: "user", content: message }
       ],
-      temperature: 0.1,
-      max_tokens: 150,
+      temperature: 0.3,
+      max_tokens: 200,
     });
 
     const reply = completion.choices[0].message.content.trim();
@@ -70,7 +56,7 @@ module.exports = async (req, res) => {
   } catch (error) {
     console.error("AI API Error:", error);
     res.status(500).json({
-      reply: "I'm experiencing a brief technical difficulty. Please visit the links above for instant access to the workshop or to schedule a call!"
+      reply: "Sorry, I’m having trouble right now. Please check the AI Fundamentals workshop or book a call using the links provided."
     });
   }
 };
