@@ -1,9 +1,13 @@
 {
   "name": "bourgeoisai-landing-page",
   "version": "1.0.0",
-  "description": "Premium landing page with Vercel Serverless AI Chatbot.",
-  "main": "api/cleo-chat.js",
+  "description": "Premium landing page with AI Chatbot.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
   "dependencies": {
-    "openai": "^4.0.0" 
+    "express": "^4.21.2",
+    "openai": "^4.0.0"
   }
 }
