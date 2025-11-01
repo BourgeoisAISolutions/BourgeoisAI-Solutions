@@ -1,0 +1,156 @@
+Here are the complete files you need to add to your Replit static site project to support gated video access via Gumroad license verification with a backend API.
+
+***
+
+### 1. `server.js` - Node.js Express server for Gumroad license verification and static file hosting
+
+```js
+const express = require('express');
+const fetch = require('node-fetch');
+const path = require('path');
+const app = express();
+
+app.use(express.json());
+
+const GUMROAD_API_ACCESS_TOKEN = process.env.GUMROAD_API_ACCESS_TOKEN;
+
+app.post('/api/verify-license', async (req, res) => {
+  const { licenseKey } = req.body;
+
+  if (!licenseKey) {
+    res.status(400).json({ error: 'License key required' });
+    return;
+  }
+
+  try {
+    const gumroadResponse = await fetch('https://api.gumroad.com/v2/licenses/verify', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        license_key: licenseKey,
+        access_token: GUMROAD_API_ACCESS_TOKEN,
+      }),
+    });
+
+    const json = await gumroadResponse.json();
+
+    if (gumroadResponse.ok && json.success && json.purchase) {
+      res.json({ verified: true });
+    } else {
+      res.json({ verified: false });
+    }
+  } catch (error) {
+    console.error('Error verifying license:', error);
+    res.status(500).json({ error: 'Server error verifying license' });
+  }
+});
+
+// Serve static frontend files from 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
+```
+
+***
+
+### 2. `public/gated-video.html` - Frontend gated video page
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Gated AI Fundamentals Video</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 1rem; max-width: 600px; margin: auto; }
+    input, button { padding: 0.75rem; font-size: 1rem; margin-top: 0.5rem; }
+    .error { color: red; margin-top: 0.5rem; }
+  </style>
+</head>
+<body>
+  <h1>Access Your AI Fundamentals Video</h1>
+  <div id="verification">
+    <label for="licenseKey">Enter your Gumroad License Key:</label><br />
+    <input type="text" id="licenseKey" placeholder="License Key" autocomplete="off" />
+    <button id="verifyBtn">Verify</button>
+    <p id="message" class="error"></p>
+  </div>
+  <div id="videoContainer" style="display:none; margin-top: 1rem;">
+    <video controls width="100%" aria-label="AI Fundamentals Video">
+      <source src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762031573/Aifundamentals_1_myfsfc.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  </div>
+
+  <script>
+    const verifyBtn = document.getElementById('verifyBtn');
+    const licenseInput = document.getElementById('licenseKey');
+    const message = document.getElementById('message');
+    const videoContainer = document.getElementById('videoContainer');
+    const verificationDiv = document.getElementById('verification');
+
+    verifyBtn.addEventListener('click', async () => {
+      message.textContent = '';
+      const licenseKey = licenseInput.value.trim();
+
+      if (!licenseKey) {
+        message.textContent = 'Please enter your license key.';
+        return;
+      }
+
+      try {
+        const response = await fetch('/api/verify-license', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ licenseKey }),
+        });
+
+        const data = await response.json();
+
+        if (data.verified) {
+          verificationDiv.style.display = 'none';
+          videoContainer.style.display = 'block';
+        } else {
+          message.textContent = 'Invalid license key. Please check and try again.';
+        }
+      } catch (error) {
+        message.textContent = 'Error verifying license. Please try again later.';
+      }
+    });
+  </script>
+</body>
+</html>
+```
+
+***
+
+### 3. Environment variable on Replit
+
+- Add your Gumroad API access token as a Replit secret/environment variable named:
+
+```
+GUMROAD_API_ACCESS_TOKEN
+```
+
+***
+
+### 4. Steps to integrate
+
+- Place your existing static files into a directory called `public`.
+- Add `server.js` to your project root.
+- Add `public/gated-video.html` as the gated video page.
+- Update your site navigation or links to point users to `/gated-video.html` after purchase.
+- Run the server with `node server.js` or configure Replit to start `server.js`.
+- Your API endpoint will be available at `/api/verify-license` for the frontend page.
+
+***
+
+This setup securely verifies license keys with Gumroad in your Replit backend, protects video content, and keeps your token private, all while serving a static frontend.
+
+If you want, I can help with detailed setup instructions for Replit or provide shell commands to add files for you.
+
+[1](https://github.com/BourgeoisAISolutions/BourgeoisAI-Solutions/tree/main)
