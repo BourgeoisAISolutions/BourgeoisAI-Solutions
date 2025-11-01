@@ -11,21 +11,336 @@
     <meta property="og:title" content="BourgeoisAI" />
     <meta property="og:description" content="Unlock your potential with AI Fundamentals workshop and consulting services from BourgeoisAI." />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://bourgeoisai.io" />
+    <meta property="og:url" content="https://bourgeoisai.com" />
     <meta property="og:image" content="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="BourgeoisAI" />
     <meta name="twitter:description" content="Unlock your potential with AI Fundamentals workshop and consulting services from BourgeoisAI." />
     <meta name="twitter:image" content="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" />
-    <link rel="canonical" href="https://bourgeoisai.io" />
+    <link rel="canonical" href="https://bourgeoisai.com" />
     <style>
-      /* your CSS styles here, unchanged, for brevity in this snippet */
-      /* ... */
+      /* Variables */
+      :root {
+        --bg-primary: #0a0a0e;
+        --bg-secondary: #121217;
+        --bg-hero-start: #181920;
+        --bg-hero-end: #0f0a19;
+        --card-bg: #1a1a1a;
+        --card-border: rgba(192, 192, 192, 0.35);
+        --input-bg: #2b2b2b;
+        --text-dark: #ffffff;
+        --text-light: #b0b0b0;
+        --accent-primary: #c0c0c0;
+        --accent-glow: rgba(192, 192, 192, 0.8);
+        --button-hover-bg: #666666;
+        --button-dark-bg: #333333;
+        --button-light-bg: #d0d0d0;
+      }
+  
+      /* Global */
+      body {
+        margin: 0;
+        font-family: "Inter", sans-serif;
+        background: var(--bg-primary);
+        color: var(--text-dark);
+        overflow-x: hidden;
+        line-height: 1.5;
+        font-size: 16px;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+      h1, h2, h3 {
+        font-weight: 700;
+        margin: 0.5rem 0;
+        line-height: 1.2;
+      }
+      h1 {
+        font-size: 2rem;
+      }
+      h2 {
+        font-size: 1.25rem;
+      }
+      h3 {
+        font-size: 1.1rem;
+      }
+      a {
+        text-decoration: none;
+        color: var(--accent-primary);
+        transition: color 0.3s ease;
+      }
+      a:hover,
+      a:focus {
+        color: var(--accent-primary);
+        outline: 2px solid var(--accent-primary);
+        outline-offset: 2px;
+      }
+      .full-screen-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        z-index: -1;
+      }
+      .full-screen-bg img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.5;
+      }
+      #hero-section {
+        position: relative;
+        z-index: 10;
+        padding: 1.5rem 1rem 1rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+      }
+  
+      /* Navigation */
+      .top-nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      }
+      .top-nav a {
+        color: var(--text-light);
+        font-weight: 600;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        transition: color 0.3s ease;
+      }
+      .top-nav a:hover,
+      .top-nav a:focus {
+        color: var(--accent-primary);
+      }
+      .nav-auth-purchase {
+        background: #c0c0c0;
+        color: #181920 !important;
+        font-size: 1rem;
+        font-weight: 700;
+        padding: 0.6rem 1.25rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 8px rgba(192, 192, 192, 0.2);
+        border: none;
+        outline: none;
+        transition: background 0.3s, color 0.3s;
+        display: inline-block;
+        flex-shrink: 0;
+      }
+      .nav-auth-purchase:hover,
+      .nav-auth-purchase:focus {
+        background: #e2e2e2;
+        color: #181920;
+      }
+  
+      /* Content Grid */
+      .content-grid {
+        position: relative;
+        z-index: 10;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 8rem 1rem 2rem;
+        max-width: 720px;
+        margin: 0 auto;
+      }
+  
+      /* Cards */
+      .card {
+        background: none;
+        border: none;
+        box-shadow: none;
+        border-radius: 12px;
+        padding: 1.5rem 1rem;
+        display: flex;
+        flex-direction: column;
+      }
+      .card h2 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-top: 0;
+        color: var(--text-dark);
+        border-bottom: 2px solid var(--accent-primary);
+        padding-bottom: 0.35rem;
+        margin-bottom: 1rem;
+      }
+      .card-footer-button-container {
+        margin-top: auto;
+        align-self: flex-start;
+      }
+  
+      /* Buttons */
+      .cta-button {
+        background: #c0c0c0;
+        color: #181920;
+        padding: 0.65rem 1.25rem;
+        border-radius: 9px;
+        font-weight: 700;
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        transition: background 0.3s, color 0.3s;
+        box-shadow: 0 2px 7px rgba(192,192,192,0.15);
+        text-decoration: none;
+      }
+      .cta-button:hover,
+      .cta-button:focus {
+        background: #e2e2e2;
+        color: #181920;
+      }
+  
+      /* Chat input styling */
+      .chat-card-input-group {
+        display: flex;
+        align-items: center;
+        background: rgba(43, 43, 43, 0.85);
+        border-radius: 8px;
+        border: 1px solid #555;
+        padding: 0.5rem 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .chat-card-input-group input {
+        flex: 1;
+        background: transparent;
+        border: none;
+        color: var(--text-dark);
+        padding: 0.5rem 0.5rem;
+        font-size: 1rem;
+        outline: none;
+      }
+      .chat-card-input-group input::placeholder {
+        color: #999;
+      }
+      .chat-card-input-group button {
+        background: transparent;
+        color: var(--accent-primary);
+        border: none;
+        cursor: pointer;
+        padding: 0.65rem;
+        font-size: 1.15rem;
+        transition: color 0.3s;
+      }
+      .chat-card-input-group button:hover,
+      .chat-card-input-group button:focus {
+        color: var(--button-hover-bg);
+      }
+  
+      .chat-history {
+        height: 140px;
+        overflow-y: auto;
+        background: rgba(17, 17, 17, 0.75);
+        border-radius: 8px;
+        padding: 0.75rem;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        border: 1px solid #333;
+      }
+  
+      .book-call-link {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(43, 43, 43, 0.85);
+        border: 1px solid #555;
+        border-radius: 8px;
+        padding: 0.75rem 1rem;
+        color: var(--text-dark);
+        font-weight: 600;
+        margin-bottom: 1.5rem;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .book-call-link span {
+        color: var(--text-light);
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+  
+      audio,
+      video {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(43, 43, 43, 0.85);
+        border-radius: 8px;
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
+  
+      footer {
+        position: relative;
+        z-index: 10;
+        text-align: center;
+        padding: 1.8rem 1rem;
+        font-size: 0.9rem;
+        background: var(--bg-secondary);
+        border-top: 1px solid var(--card-border);
+        margin-top: 2rem;
+        color: var(--text-light);
+      }
+      footer a {
+        color: var(--accent-primary);
+        margin: 0 0.4rem;
+        font-size: 0.9rem;
+      }
+  
+      /* Responsive Media Queries */
+      @media (min-width: 600px) {
+        body {
+          font-size: 17px;
+        }
+        .content-grid {
+          max-width: 900px;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+          padding: 10rem 2rem 3rem;
+          gap: 2rem;
+        }
+      }
+      @media (min-width: 900px) {
+        body {
+          font-size: 18px;
+        }
+        h1 {
+          font-size: 2.5rem;
+        }
+        h2 {
+          font-size: 1.6rem;
+        }
+        h3 {
+          font-size: 1.25rem;
+        }
+        .top-nav a {
+          font-size: 1.1rem;
+          padding: 0.75rem 1.25rem;
+        }
+        .nav-auth-purchase {
+          font-size: 1.2rem;
+          padding: 0.75rem 1.5rem;
+          border-radius: 10px;
+        }
+      }
     </style>
   </head>
   <body>
-    <div class="full-screen-bg" role="img" aria-label="BourgeoisAI Background Texture">
-      <img src="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png" alt="" aria-hidden="true" />
+    <div
+      class="full-screen-bg"
+      role="img"
+      aria-label="BourgeoisAI Background Texture"
+    >
+      <img
+        src="https://res.cloudinary.com/dize1cvpr/image/upload/v1762010749/Butterfly_pl0kdh.png"
+        alt=""
+        aria-hidden="true"
+      />
     </div>
 
     <header id="hero-section" role="banner">
@@ -34,38 +349,307 @@
         <a href="#masterclass-card">Masterclass</a>
         <a href="#concierge-card">Concierge</a>
         <a href="#consulting-card">Consulting</a>
-        <a href="https://gum.new/gum/cmhgom0ot000g04jo21qkh16a" target="_blank" rel="noopener noreferrer" class="nav-auth-purchase">Secure Your Copy</a>
+        <a
+          href="https://gum.new/gum/cmhgom0ot000g04jo21qkh16a"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-auth-purchase"
+          >Secure Your Copy</a
+        >
       </nav>
     </header>
 
     <main class="content-grid" id="main-content">
-      <!-- Sections omitted for brevity, same as earlier, just replacing URLs accordingly -->
-      <section id="masterclass-card" class="card" role="region" aria-labelledby="masterclass-heading" tabindex="-1">
+      <section
+        id="masterclass-card"
+        class="card"
+        role="region"
+        aria-labelledby="masterclass-heading"
+        tabindex="-1"
+      >
         <h2 id="masterclass-heading">Fundamentals Now</h2>
-        <p style="color: var(--text-light); margin-bottom: 2rem;">Unlock your potential with our foundational AI workshop. Learn to automate workflows, expand income streams, and reclaim your creative time.</p>
-        <div style="font-size: 2rem; font-weight: 800; color: var(--accent-primary); margin-bottom: 1rem;">
+        <p style="color: var(--text-light); margin-bottom: 2rem">
+          Unlock your potential with our foundational AI workshop. Learn to
+          automate workflows, expand income streams, and reclaim your creative
+          time.
+        </p>
+        <div
+          style="
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+          "
+        >
           $29
           <span style="font-size: 1rem; color: var(--text-light)">USD</span>
         </div>
         <div class="card-footer-button-container">
-          <a href="https://gum.new/gum/cmhgom0ot000g04jo21qkh16a" target="_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
+          <a
+            href="https://gum.new/gum/cmhgom0ot000g04jo21qkh16a"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            >Secure Your Copy Now</a
+          >
         </div>
       </section>
-      <!-- More sections similarly contain URLs or references to bourgeoisi.io where applicable -->
+
+      <section
+        id="concierge-card"
+        class="card"
+        role="region"
+        aria-labelledby="concierge-heading"
+        tabindex="-1"
+      >
+        <h2 id="concierge-heading">Chat Form</h2>
+        <p
+          style="
+            color: var(--text-light);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+          "
+        >
+          Ask anything about AI automation and productivity.
+        </p>
+        <div
+          class="chat-history"
+          aria-live="polite"
+          aria-atomic="false"
+          role="log"
+        >
+          <p style="color: var(--accent-primary)">
+            ✨ Concierge AI: How may I assist you with automation?
+          </p>
+        </div>
+        <form id="chat-form" style="display: block">
+          <div class="chat-card-input-group">
+            <label for="user-input" class="sr-only">Your message</label>
+            <input
+              type="text"
+              id="user-input"
+              placeholder="Type your message..."
+              aria-describedby="chat-instructions"
+            />
+            <button type="submit" aria-label="Send message">🔍</button>
+          </div>
+        </form>
+
+        <h3 style="color: var(--accent-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;">
+          Preview for AI Fundamentals Class
+        </h3>
+        <audio controls aria-label="Preview audio for AI Fundamentals Class">
+          <source src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762010749/AI_Mastery_for_Busy_Professionals_Demo_vpkoif.m4a" type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+
+        <!-- New video embedded here -->
+        <video
+          controls
+          aria-label="BourgeoisAI.IO Introduction Video"
+          style="margin-top: 1.5rem;"
+        >
+          <source
+            src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762025241/BourgeoisAI.IO_grnbdm.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video element.
+        </video>
+
+        <a
+          href="https://calendly.com/thomas-bourgeoisai/new-meeting"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="book-call-link"
+          role="button"
+          style="margin-top: 1.5rem;"
+        >
+          Book a Call
+          <span aria-hidden="true">▶</span>
+        </a>
+
+        <div class="card-footer-button-container" style="margin-top: 1.5rem">
+          <a
+            href="https://calendly.com/thomas-bourgeoisai/new-meeting"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            >Book a Call</a
+          >
+        </div>
+      </section>
+
+      <section
+        id="email-support-1"
+        class="card"
+        role="region"
+        aria-labelledby="email-support-heading"
+        tabindex="-1"
+      >
+        <h2 id="email-support-heading">Email Support</h2>
+        <p style="color: var(--text-light); margin-bottom: 1rem">
+          Have questions or need assistance? Our dedicated support team is here
+          to help. Send us a message and we'll get back to you promptly.
+        </p>
+        <form id="email-form" style="display: flex; flex-direction: column; gap: 1rem;">
+          <div>
+            <label for="support-name" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Name</label>
+            <input
+              type="text"
+              id="support-name"
+              name="name"
+              required
+              style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem;"
+              placeholder="Your name"
+            />
+          </div>
+          <div>
+            <label for="support-email" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Email</label>
+            <input
+              type="email"
+              id="support-email"
+              name="email"
+              required
+              style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem;"
+              placeholder="your@email.com"
+            />
+          </div>
+          <div>
+            <label for="support-message" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Message</label>
+            <textarea
+              id="support-message"
+              name="message"
+              required
+              rows="4"
+              style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem; resize: vertical;"
+              placeholder="How can we help you?"
+            ></textarea>
+          </div>
+          <div id="email-status" style="color: var(--accent-primary); min-height: 1.5rem; font-size: 0.9rem;"></div>
+          <button type="submit" class="cta-button">Send Message</button>
+        </form>
+      </section>
+
+      <section
+        id="consulting-card"
+        class="card"
+        role="region"
+        aria-labelledby="consulting-heading"
+        tabindex="-1"
+      >
+        <h2 id="consulting-heading">Consulting</h2>
+        <p style="color: var(--text-light); margin-bottom: 2rem">
+          Need personalized AI strategy? Book a one-on-one consultation with
+          our experts to transform your business with custom AI solutions.
+        </p>
+        <div class="card-footer-button-container">
+          <a
+            href="https://calendly.com/thomas-bourgeoisai/new-meeting"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cta-button"
+            >Schedule Your Call</a
+          >
+        </div>
+      </section>
     </main>
 
     <footer role="contentinfo">
       <p>Copyright with AI - Intelligenis AI Solutions</p>
       <p>
-        <a href="https://bourgeoisai.io" target="_blank" rel="noopener noreferrer">© bourgeoisai.io</a>
+        <a
+          href="https://bourgeoisai.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          >© bourgeoisai.com</a
+        >
         |
-        <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+        <a
+          href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/"
+          target="_blank"
+          rel="noopener noreferrer"
+          >LinkedIn</a
+        >
       </p>
     </footer>
 
-    <!-- scripts omitted for brevity, same as earlier -->
     <script>
-      // Your JavaScript for form handling and chat interactions remains unchanged
+      document
+        .getElementById("chat-form")
+        .addEventListener("submit", function (e) {
+          e.preventDefault();
+          const input = document.getElementById("user-input");
+          const chatHistory = document.querySelector(".chat-history");
+          const userMessage = input.value.trim();
+          if (userMessage) {
+            const userP = document.createElement("p");
+            userP.style.textAlign = "right";
+            userP.style.color = "#fff";
+            userP.textContent = "You: " + userMessage;
+            chatHistory.appendChild(userP);
+            setTimeout(() => {
+              const aiP = document.createElement("p");
+              aiP.style.textAlign = "left";
+              aiP.style.color = "var(--accent-primary)";
+              aiP.textContent =
+                'Concierge AI: I received your query! Please click "Book a Call" for detailed assistance.';
+              chatHistory.appendChild(aiP);
+              chatHistory.scrollTop = chatHistory.scrollHeight;
+            }, 800);
+            input.value = "";
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+          }
+        });
+
+      document
+        .getElementById("email-form")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const statusDiv = document.getElementById("email-status");
+          const submitButton = e.target.querySelector('button[type="submit"]');
+          const originalButtonText = submitButton.textContent;
+
+          const formData = {
+            name: document.getElementById("support-name").value,
+            email: document.getElementById("support-email").value,
+            message: document.getElementById("support-message").value,
+          };
+
+          submitButton.textContent = "Sending...";
+          submitButton.disabled = true;
+          statusDiv.textContent = "";
+
+          try {
+            const response = await fetch("/api/send-email", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(formData),
+            });
+
+            const result = await response.json();
+
+            if (response.ok && result.success) {
+              statusDiv.textContent =
+                "✓ Message sent successfully! We'll get back to you soon.";
+              statusDiv.style.color = "#4caf50";
+              e.target.reset();
+            } else {
+              statusDiv.textContent =
+                "✗ " + (result.error || "Failed to send message. Please try again.");
+              statusDiv.style.color = "#f44336";
+            }
+          } catch (error) {
+            statusDiv.textContent =
+              "✗ Network error. Please check your connection and try again.";
+            statusDiv.style.color = "#f44336";
+          } finally {
+            submitButton.textContent = originalButtonText;
+            submitButton.disabled = false;
+          }
+        });
     </script>
   </body>
 </html>
