@@ -61,6 +61,9 @@
       h2 {
         font-size: 1.25rem;
       }
+      h3 {
+        font-size: 1.1rem;
+      }
       a {
         text-decoration: none;
         color: var(--accent-primary);
@@ -312,6 +315,9 @@
         h2 {
           font-size: 1.6rem;
         }
+        h3 {
+          font-size: 1.25rem;
+        }
         .top-nav a {
           font-size: 1.1rem;
           padding: 0.75rem 1.25rem;
@@ -428,24 +434,12 @@
             <button type="submit" aria-label="Send message">🔍</button>
           </div>
         </form>
-        <a
-          href="https://calendly.com/thomas-bourgeoisai/new-meeting"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="book-call-link"
-          role="button"
-        >
-          Book a Call
-          <span aria-hidden="true">▶</span>
-        </a>
-        <audio
-          controls
-          aria-label="AI Mastery for Busy Professionals demo audio"
-        >
-          <source
-            src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762010749/AI_Mastery_for_Busy_Professionals_Demo_vpkoif.m4a"
-            type="audio/mpeg"
-          />
+
+        <h3 style="color: var(--accent-primary); margin-top: 1.5rem; margin-bottom: 0.5rem; font-weight: 700;">
+          Preview for AI Fundamentals Class
+        </h3>
+        <audio controls aria-label="Preview audio for AI Fundamentals Class">
+          <source src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762010749/AI_Mastery_for_Busy_Professionals_Demo_vpkoif.m4a" type="audio/mpeg" />
           Your browser does not support the audio element.
         </audio>
 
@@ -461,6 +455,18 @@
           />
           Your browser does not support the video element.
         </video>
+
+        <a
+          href="https://calendly.com/thomas-bourgeoisai/new-meeting"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="book-call-link"
+          role="button"
+          style="margin-top: 1.5rem;"
+        >
+          Book a Call
+          <span aria-hidden="true">▶</span>
+        </a>
 
         <div class="card-footer-button-container" style="margin-top: 1.5rem">
           <a
