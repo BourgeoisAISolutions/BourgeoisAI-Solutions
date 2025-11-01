@@ -1,44 +1,317 @@
-  <main>
-    <section id="chatbot-hero">
-      <h2>Welcome to BourgeoisAI</h2>
-      <p>Ask me anything about AI automation and productivity!</p>
-      <div id="chat-window">✨ Chatbot ready. Type your question below to begin.</div>
-      <form id="chat-form">
-        <input type="text" id="user-input" placeholder="Type your message..." />
-        <button type="submit" class="cta-button">➤</button>
-      </form>
-    </section>
+<!DOCTYPE html>
 
-    <section id="purchase">
-      <h2>The AI Productivity Blueprint Workshop</h2>
-      <p class="price">$29 USD (One-Time Payment)</p>
-      <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
-      <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
-    </section>
+<html lang="en">
 
-    <section>
-      <h2>Need Expert Help? Book a Strategy Session</h2>
-      <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
-    </section>
+<head>
 
-    <section id="email-support">
-      <h2>Contact BourgeoisAI Support</h2>
-      <p style="color: var(--text-light); font-weight: 600;">Submit a message directly to our support inbox. We'll respond within 24 hours.</p>
-      <form action="mailto:bourgeoisaisupport@proton.me" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your name" required />
-        <input type="email" name="email" placeholder="Your email" required />
-        <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
-        <button type="submit" class="cta-button">Send Email</button>
-      </form>
-    </section>
-  </main>
+<meta charset="UTF-8" />
 
-  <footer>
-    © 2025 BourgeoisAI Solutions •
-    <a href="https://bourgeoisai.com" target="_blank">bourgeoisai.com</a>•
-    <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank">LinkedIn</a>
-  </footer>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<title>BourgeoisAI: Cinematic Hero</title>
+
+<meta name="description" content="Learn, automate, and grow with BourgeoisAI — AI consulting, intelligent training, and automation for businesses and learners." />
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
+
+<style>
+
+:root {
+
+  --bg-dark: #0F0A19;
+
+  --text-dark: #FFFFFF;
+
+  --text-light: #C0DEFF;
+
+  --accent-primary: #00CCFF;
+
+  --accent-secondary: #FFFFFF;
+
+  --header-gradient: radial-gradient(circle at top left, #1B112B, #0F0A19);
+
+  --button-bg: var(--accent-primary);
+
+  --button-hover-bg: #0099CC;
+
+  --card-bg: #1A0F2B;
+
+  --card-border: rgba(0, 204, 255, 0.4);
+
+}
+
+body {
+
+  margin: 0;
+
+  font-family: 'Inter', sans-serif;
+
+  background: var(--bg-dark);
+
+  color: var(--text-dark);
+
+  overflow-x: hidden;
+
+}
+
+header {
+
+  background: var(--header-gradient);
+
+  padding: 2rem;
+
+  text-align: center;
+
+  animation: fadeIn 1.5s ease-in-out;
+
+}
+
+header h1 {
+
+  font-size: 2.5rem;
+
+  font-weight: 800;
+
+  text-shadow: 0 0 10px rgba(0, 204, 255, 0.4);
+
+}
+
+header p {
+
+  font-size: 1.1rem;
+
+  color: var(--text-light);
+
+}
+
+.cta-button {
+
+  display: inline-block;
+
+  margin-top: 1rem;
+
+  padding: 0.75rem 1.5rem;
+
+  background: var(--button-bg);
+
+  color: var(--bg-dark);
+
+  border-radius: 6px;
+
+  text-decoration: none;
+
+  font-weight: 600;
+
+  box-shadow: 0 0 12px rgba(0, 204, 255, 0.5);
+
+  transition: background 0.3s ease, transform 0.3s ease;
+
+}
+
+.cta-button:hover {
+
+  background: var(--button-hover-bg);
+
+  transform: scale(1.05);
+
+}
+
+#bourgeoisai-hero {
+
+  text-align: center;
+
+  padding: 60px 20px;
+
+  background: radial-gradient(circle at center, #1B112B 0%, #0F0A19 100%);
+
+  animation: fadeInUp 1.5s ease-out;
+
+}
+
+#bourgeoisai-hero img {
+
+  max-width: 320px;
+
+  height: auto;
+
+  border-radius: 12px;
+
+  box-shadow: 0 0 30px rgba(0, 204, 255, 0.4);
+
+  margin-bottom: 30px;
+
+  animation: pulse 3s infinite;
+
+}
+
+#bourgeoisai-hero h1 {
+
+  font-size: 2.5rem;
+
+  font-weight: 800;
+
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+
+}
+
+#bourgeoisai-hero p {
+
+  font-size: 1.1rem;
+
+  color: var(--text-light);
+
+  margin-bottom: 20px;
+
+}
+
+.cta-group {
+
+  display: flex;
+
+  justify-content: center;
+
+  gap: 20px;
+
+  flex-wrap: wrap;
+
+  margin-top: 30px;
+
+}
+
+@keyframes fadeIn {
+
+  from { opacity: 0; }
+
+  to { opacity: 1; }
+
+}
+
+@keyframes fadeInUp {
+
+  from { opacity: 0; transform: translateY(20px); }
+
+  to { opacity: 1; transform: translateY(0); }
+
+}
+
+@keyframes pulse {
+
+  0%, 100% { transform: scale(1); }
+
+  50% { transform: scale(1.05); }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>BourgeoisAI</h1>
+
+<p>Your Edge in the Age of AI</p>
+
+<a href="#purchase" class="cta-button">Get Started with AI</a>
+
+</header>
+
+<section id="bourgeoisai-hero">
+
+<img src="/public/glowing-butterfly-logo.png" alt="Glowing Butterfly and B Emblem" />
+
+<h1>BourgeoisAI Solutions</h1>
+
+<p>Cinematic education · Concierge chatbot · Consult funnels · SaaS automation · Enterprise vaults</p>
+
+<div class="cta-group">
+
+  <a href="#masterclass" class="cta-button">Masterclass</a>
+
+  <a href="#concierge" class="cta-button">Concierge</a>
+
+  <a href="#consulting" class="cta-button">Consulting</a>
+
+</div>
+
+</section>
+
+<main>
+
+<section id="chatbot-hero">
+
+  <h2>Welcome to BourgeoisAI</h2>
+
+  <p>Ask me anything about AI automation and productivity!</p>
+
+  <div id="chat-window">✨ Chatbot ready. Type your question below to begin.</div>
+
+  <form id="chat-form">
+
+    <input type="text" id="user-input" placeholder="Type your message..." />
+
+    <button type="submit" class="cta-button">➤</button>
+
+  </form>
+
+</section>
+
+<section id="purchase">
+
+  <h2>The AI Productivity Blueprint Workshop</h2>
+
+  <p class="price">$29 USD (One-Time Payment)</p>
+
+  <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
+
+  <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="\_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
+
+</section>
+
+<section>
+
+  <h2>Need Expert Help? Book a Strategy Session</h2>
+
+  <p style="color: var(--text-light); font-weight: 600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
+
+  <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="\_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
+
+</section>
+
+<section id="email-support">
+
+  <h2>Contact BourgeoisAI Support</h2>
+
+  <p style="color: var(--text-light); font-weight: 600;">Submit a message directly to our support inbox. We'll respond within 24 hours.</p>
+
+  <form action="mailto:bourgeoisaisupport@proton.me" method="POST" enctype="text/plain">
+
+    <input type="text" name="name" placeholder="Your name" required />
+
+    <input type="email" name="email" placeholder="Your email" required />
+
+    <textarea name="message" placeholder="Your message..." rows="5" required></textarea>
+
+    <button type="submit" class="cta-button">Send Email</button>
+
+  </form>
+
+</section>
+
+</main>
+
+<footer>
+
+© 2025 BourgeoisAI Solutions •
+
+<a href="https://bourgeoisai.com" target="\_blank">bourgeoisai.com</a>•
+
+<a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="\_blank">LinkedIn</a>
+
+</footer>
 
 </body>
+
 </html>
