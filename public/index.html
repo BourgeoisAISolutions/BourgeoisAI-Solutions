@@ -60,6 +60,7 @@
       a {
         text-decoration: none;
         color: var(--accent-primary);
+        transition: color 0.3s;
       }
       a:hover,
       a:focus {
@@ -92,7 +93,6 @@
         font-weight: 600;
         padding: 0.5rem 0.75rem;
         border-radius: 4px;
-        transition: color 0.3s;
       }
       .top-nav a:hover,
       .top-nav a:focus {
@@ -106,19 +106,17 @@
         padding: 0.75rem 1.25rem;
         border-radius: 7px;
         box-shadow: 0 2px 7px rgba(192, 192, 192, 0.12);
-        text-decoration: none;
         border: none;
         outline: none;
-        transition:
-          background 0.2s,
-          color 0.2s;
+        transition: background 0.2s, color 0.2s;
+        text-decoration: none;
+        display: inline-block;
       }
       .nav-auth-purchase:hover,
       .nav-auth-purchase:focus {
         background: #e2e2e2;
         color: #181920;
       }
-      /* rest of your styles unchanged */
       .content-grid {
         position: relative;
         z-index: 10;
@@ -156,6 +154,25 @@
       .card-footer-button-container {
         margin-top: auto;
         align-self: flex-start;
+      }
+      .cta-button {
+        background: #c0c0c0;
+        color: #181920;
+        padding: 0.75rem 1.5rem;
+        border-radius: 7px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        display: inline-block;
+        transition: background 0.3s, color 0.3s;
+        box-shadow: 0 2px 7px rgba(192,192,192,0.12);
+        text-decoration: none;
+      }
+      .cta-button:hover,
+      .cta-button:focus {
+        background: #e2e2e2;
+        color: #181920;
       }
       .chat-card-input-group {
         display: flex;
@@ -214,6 +231,15 @@
       .book-call-link span {
         color: var(--text-light);
       }
+      audio,
+      video {
+        width: 100%;
+        max-width: 600px;
+        background: rgba(43, 43, 43, 0.8);
+        border-radius: 6px;
+        padding: 0.5rem;
+        box-sizing: border-box;
+      }
       footer {
         position: relative;
         z-index: 10;
@@ -232,7 +258,6 @@
     </style>
   </head>
   <body>
-    <!-- Fixed Background Element - Sits behind all content -->
     <div
       class="full-screen-bg"
       role="img"
@@ -252,7 +277,7 @@
         <a href="#concierge-card">Concierge</a>
         <a href="#consulting-card">Consulting</a>
         <a
-          href="https://gum.new/gum/cmhgmi107001204l179wl64v0https://gum.new/gum/cmhgmi107001204l179wl64v0"
+          href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw"
           target="_blank"
           rel="noopener noreferrer"
           class="nav-auth-purchase"
@@ -291,16 +316,7 @@
             href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw"
             target="_blank"
             rel="noopener noreferrer"
-            class="card-action-button"
-            style="
-              background: #c0c0c0;
-              color: #181920;
-              padding: 0.75rem 1.5rem;
-              border-radius: 7px;
-              font-weight: 700;
-              display: inline-block;
-              transition: background 0.3s;
-            "
+            class="cta-button"
             >Secure Your Copy Now</a
           >
         </div>
@@ -357,7 +373,6 @@
         </a>
         <audio
           controls
-          style="width: 100%; margin-top: 1rem"
           aria-label="AI Mastery for Busy Professionals demo audio"
         >
           <source
@@ -366,21 +381,26 @@
           />
           Your browser does not support the audio element.
         </audio>
+
+        <!-- New video embedded here -->
+        <video
+          controls
+          aria-label="BourgeoisAI.IO Introduction Video"
+          style="margin-top: 1.5rem;"
+        >
+          <source
+            src="https://res.cloudinary.com/dize1cvpr/video/upload/v1762025241/BourgeoisAI.IO_grnbdm.mp4"
+            type="video/mp4"
+          />
+          Your browser does not support the video element.
+        </video>
+
         <div class="card-footer-button-container" style="margin-top: 1.5rem">
           <a
             href="https://calendly.com/thomas-bourgeoisai/new-meeting"
             target="_blank"
             rel="noopener noreferrer"
-            class="card-action-button"
-            style="
-              background: #c0c0c0;
-              color: #181920;
-              padding: 0.75rem 1.5rem;
-              border-radius: 7px;
-              font-weight: 700;
-              display: inline-block;
-              transition: background 0.3s;
-            "
+            class="cta-button"
             >Book a Call</a
           >
         </div>
@@ -401,10 +421,10 @@
         <form id="email-form" style="display: flex; flex-direction: column; gap: 1rem;">
           <div>
             <label for="support-name" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Name</label>
-            <input 
-              type="text" 
-              id="support-name" 
-              name="name" 
+            <input
+              type="text"
+              id="support-name"
+              name="name"
               required
               style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem;"
               placeholder="Your name"
@@ -412,10 +432,10 @@
           </div>
           <div>
             <label for="support-email" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Email</label>
-            <input 
-              type="email" 
-              id="support-email" 
-              name="email" 
+            <input
+              type="email"
+              id="support-email"
+              name="email"
               required
               style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem;"
               placeholder="your@email.com"
@@ -423,9 +443,9 @@
           </div>
           <div>
             <label for="support-message" style="display: block; color: var(--text-light); margin-bottom: 0.5rem;">Message</label>
-            <textarea 
-              id="support-message" 
-              name="message" 
+            <textarea
+              id="support-message"
+              name="message"
               required
               rows="4"
               style="width: 100%; padding: 0.75rem; background: var(--input-bg); border: 1px solid var(--card-border); border-radius: 6px; color: var(--text-dark); font-size: 1rem; resize: vertical;"
@@ -433,16 +453,7 @@
             ></textarea>
           </div>
           <div id="email-status" style="color: var(--accent-primary); min-height: 1.5rem; font-size: 0.9rem;"></div>
-          <button type="submit" class="card-action-button" style="
-            background: #c0c0c0;
-            color: #181920;
-            padding: 0.75rem 1.5rem;
-            border-radius: 7px;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-          ">Send Message</button>
+          <button type="submit" class="cta-button">Send Message</button>
         </form>
       </section>
 
@@ -463,16 +474,7 @@
             href="https://calendly.com/thomas-bourgeoisai/new-meeting"
             target="_blank"
             rel="noopener noreferrer"
-            class="card-action-button"
-            style="
-              background: #c0c0c0;
-              color: #181920;
-              padding: 0.75rem 1.5rem;
-              border-radius: 7px;
-              font-weight: 700;
-              display: inline-block;
-              transition: background 0.3s;
-            "
+            class="cta-button"
             >Schedule Your Call</a
           >
         </div>
@@ -530,38 +532,39 @@
         .getElementById("email-form")
         .addEventListener("submit", async function (e) {
           e.preventDefault();
-          
+
           const statusDiv = document.getElementById("email-status");
           const submitButton = e.target.querySelector('button[type="submit"]');
           const originalButtonText = submitButton.textContent;
-          
+
           const formData = {
             name: document.getElementById("support-name").value,
             email: document.getElementById("support-email").value,
-            message: document.getElementById("support-message").value
+            message: document.getElementById("support-message").value,
           };
-          
+
           submitButton.textContent = "Sending...";
           submitButton.disabled = true;
           statusDiv.textContent = "";
-          
+
           try {
             const response = await fetch("/api/send-email", {
               method: "POST",
               headers: {
-                "Content-Type": "application/json"
+                "Content-Type": "application/json",
               },
-              body: JSON.stringify(formData)
+              body: JSON.stringify(formData),
             });
-            
+
             const result = await response.json();
-            
+
             if (response.ok && result.success) {
               statusDiv.textContent = "✓ Message sent successfully! We'll get back to you soon.";
-              statusDiv.style.color = "#4CAF50";
+              statusDiv.style.color = "#4caf50";
               e.target.reset();
             } else {
-              statusDiv.textContent = "✗ " + (result.error || "Failed to send message. Please try again.");
+              statusDiv.textContent =
+                "✗ " + (result.error || "Failed to send message. Please try again.");
               statusDiv.style.color = "#f44336";
             }
           } catch (error) {
