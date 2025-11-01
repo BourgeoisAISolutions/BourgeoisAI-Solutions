@@ -4,162 +4,420 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>BourgeoisAI: Cinematic Homepage</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg-dark: #0F0A19;
+      --bg-primary: #0A0A0E; 
+      --bg-secondary: #121217; 
+      --bg-hero-start: #181920; 
+      --bg-hero-end: #0F0A19; 
+      --card-bg: #1A1A1A; 
+      --card-border: rgba(192, 192, 192, 0.35); 
+      --input-bg: #2B2B2B;
       --text-dark: #FFFFFF;
-      --text-light: #FFEFD5;
-      --accent-primary: #FFD700;
-      --button-hover-bg: #FFB300;
-      --card-bg: #1A0F2B;
-      --card-border: rgba(255, 215, 0, 0.4);
+      --text-light: #B0B0B0;
+      --accent-primary: #C0C0C0; 
+      --accent-glow: rgba(192, 192, 192, 0.8);
+      --button-hover-bg: #666666; 
+      --button-dark-bg: #333333; 
+      --button-light-bg: #D0D0D0; 
     }
-
     body {
       margin: 0;
       font-family: 'Inter', sans-serif;
-      background: var(--bg-dark);
+      background: var(--bg-primary);
       color: var(--text-dark);
       overflow-x: hidden;
+      line-height: 1.6;
     }
-
-    header {
-      background: radial-gradient(circle at top left, #1B112B, #0F0A19);
-      padding: 2rem;
-      text-align: center;
-      animation: fadeIn 1.5s ease-in-out;
+    h1, h2, h3 {
+      font-weight: 700;
+      margin: 0.5rem 0;
     }
-
-    header h1 {
-      font-size: 2.5rem;
-      font-weight: 800;
-      text-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
-    }
-
-    header p {
-      font-size: 1.1rem;
-      color: var(--text-light);
-    }
-
-    .cta-button {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.75rem 1.5rem;
-      background: var(--accent-primary);
-      color: var(--bg-dark);
-      border-radius: 6px;
-      text-decoration: none;
-      font-weight: 600;
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.5);
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-
-    .cta-button:hover {
-      background: var(--button-hover-bg);
-      transform: scale(1.05);
-    }
-
-    #bourgeoisai-hero {
-      text-align: center;
-      padding: 60px 20px;
-      background: radial-gradient(circle at center, #1B112B 0%, #0F0A19 100%);
-      animation: fadeInUp 1.5s ease-out;
-    }
-
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 1.6rem; }
+    a { text-decoration: none; color: var(--accent-primary); }
     @keyframes fadeIn {
       from { opacity: 0; }
       to { opacity: 1; }
     }
-
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    #hero-section {
+      background: linear-gradient(180deg, var(--bg-hero-start) 0%, var(--bg-hero-end) 80%);
+      padding: 2rem 1rem 0;
+      text-align: center;
+      min-height: 400px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
     }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    .top-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      margin-bottom: 2rem;
+      width: 100%;
+    }
+    .top-nav a {
+      color: var(--text-light);
+      font-weight: 600;
+      padding: 0.5rem 0.75rem;
+      border-radius: 4px;
+      transition: color 0.3s;
+    }
+    .top-nav a:hover {
+      color: var(--accent-primary);
+    }
+    .nav-auth {
+      color: #fff;
+      background: var(--button-dark-bg);
+      border-radius: 4px;
+      padding: 0.5rem 0.75rem;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 1rem;
+      margin-bottom: 2rem;
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      padding-left: 1rem;
+    }
+    .main-logo-heading {
+      font-size: 2.5rem;
+      letter-spacing: 0.25rem;
+      color: var(--text-dark);
+      text-shadow: 0 0 10px rgba(192, 192, 192, 0.4);
+      margin-bottom: 0.5rem;
+      margin-top: 0;
+    }
+    .main-logo-subheading {
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    .large-b {
+      font-size: 4rem;
+      font-weight: 900;
+      color: var(--accent-primary); 
+      line-height: 1;
+      text-shadow: 0 0 15px var(--accent-glow);
+      margin-top: 0;
+      margin-bottom: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .butterfly-image {
+      width: 200px;
+      height: auto;
+      margin-right: 20px;
+      z-index: 1;
+    }
+    .b-and-text-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-main-title {
+      font-size: 2.2rem; 
+      font-weight: 800; 
+      color: var(--text-dark); 
+      margin-bottom: 0.5rem; 
+      text-align: left;
+      line-height: 1.2;
+    }
+    .hero-tagline {
+      font-size: 1rem; 
+      color: var(--text-light); 
+      margin-bottom: 2rem; 
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      .logo-container {
+        flex-direction: column;
+        padding-left: 0;
+      }
+      .butterfly-image {
+        margin-right: 0;
+        margin-bottom: 1rem;
+        width: 150px;
+      }
+      .b-and-text-wrapper {
+        align-items: center;
+        text-align: center;
+      }
+    }
+    .card-action-button {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--card-bg); 
+      color: var(--text-dark); 
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid var(--text-light); 
+      transition: background 0.3s ease, border-color 0.3s ease;
+      cursor: pointer;
+      text-align: center;
+    }
+    .card-action-button:hover {
+      background: #252525;
+      border-color: var(--accent-primary); 
+    }
+    .menu-button {
+      background: var(--button-dark-bg);
+      color: var(--text-dark);
+      border: 1px solid var(--accent-primary); 
+      padding: 0.75rem 2rem;
+      font-weight: 600;
+      box-shadow: none;
+      transition: background 0.3s ease, border-color 0.3s ease;
+    }
+    .menu-button:hover {
+      background: #444444;
+      border-color: var(--button-hover-bg); 
+    }
+    .menu-button-active {
+      background: var(--button-light-bg); 
+      color: var(--bg-primary); 
+      border: none;
+      padding: 0.75rem 2rem;
+      font-weight: 700;
+      box-shadow: 0 0 10px rgba(192, 192, 192, 0.4); 
+      transition: background 0.3s ease;
+    }
+    .menu-button-active:hover {
+      background: white;
+    }
+    .button-row {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      padding: 0 1rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      flex-wrap: wrap; 
+    }
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1fr; 
+      gap: 2rem;
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+      .content-grid {
+        grid-template-columns: 1fr 1fr; 
+        padding: 4rem 2rem;
+      }
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+    }
+    .card h2 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-top: 0;
+      color: var(--text-dark);
+      border-bottom: 2px solid var(--accent-primary); 
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .card-footer-button-container {
+      margin-top: auto; 
+      align-self: flex-start;
+    }
+    .chat-card-input-group {
+      display: flex;
+      align-items: center;
+      background: var(--input-bg);
+      border-radius: 6px;
+      border: 1px solid #555;
+      padding: 0.5rem 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .chat-card-input-group input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      color: var(--text-dark);
+      padding: 0.5rem 0.5rem;
+      outline: none;
+    }
+    .chat-card-input-group input::placeholder {
+      color: #777;
+    }
+    .chat-card-input-group button {
+      background: transparent;
+      color: var(--accent-primary); 
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: color 0.3s;
+    }
+    .chat-card-input-group button:hover {
+      color: var(--button-hover-bg); 
+    }
+    .chat-history {
+      height: 120px;
+      overflow-y: auto;
+      background: #111;
+      border-radius: 4px;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+      border: 1px solid #333;
+    }
+    .book-call-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: var(--input-bg);
+      border: 1px solid #555;
+      border-radius: 6px;
+      padding: 0.75rem;
+      color: var(--text-dark);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    .book-call-link span {
+      color: var(--text-light);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.85rem;
+      background: var(--bg-secondary);
+      border-top: 1px solid var(--card-border);
+      margin-top: 2rem;
+      color: var(--text-light);
+    }
+    footer a {
+      color: var(--accent-primary);
+      margin: 0 0.5rem;
     }
   </style>
 </head>
 <body>
-
-  <header>
-    <h1>BourgeoisAI</h1>
-    <p>Your Edge in the Age of AI</p>
-    <a href="#purchase" class="cta-button">Get Started with AI</a>
-  </header>
-
-  <section id="bourgeoisai-hero">
-    <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:20px;">
-      <path d="M60 10 C80 40, 100 40, 90 70 C80 100, 60 90, 60 60 C60 90, 40 100, 30 70 C20 40, 40 40, 60 10 Z"
-        stroke="#FFD700" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
-        <animate attributeName="stroke-opacity" values="0;1;0" dur="3s" repeatCount="indefinite" />
-      </path>
-    </svg>
-
-    <div style="font-size:64px; font-weight:800; color:#FFD700; text-shadow:0 0 20px rgba(255,215,0,0.6); margin-bottom:10px;">
-      B
+  <section id="hero-section">
+    <nav class="top-nav">
+      <a href="#">Get Started with AI</a>
+      <a href="#masterclass-card">Masterclass</a>
+      <a href="#concierge-card">Concierge</a>
+      <a href="#consulting-card">Consulting</a>
+      <a href="#" class="nav-auth">Coait Now</a>
+    </nav>
+    <div class="logo-container">
+      <img src="https://www.dropbox.com/scl/fi/q5hwm5h9d6ji6ex53i98w/hero.png?raw=1" alt="BourgeoisAI Butterfly" class="butterfly-image" />
+      <div class="b-and-text-wrapper">
+        <p class="hero-main-title">BourgeoisAI<br>Solutions</p>
+        <p class="hero-tagline">AI Automation • Intelligent Learning • Expert Consulting</p>
+        <div class="large-b">B</div>
+        <h1 class="main-logo-heading">BOURGEOISAI</h1>
+        <p class="main-logo-subheading">Your Edge in the Age of AI</p>
+      </div>
     </div>
-
-    <h1 style="font-size:2.5rem; font-weight:800; color:#FFFFFF; text-shadow:0 0 8px rgba(255,255,255,0.3); margin-bottom:10px;">
-      BourgeoisAI Solutions
-    </h1>
-    <p style="font-size:1.1rem; color:#FFEFD5; margin-bottom:20px;">
-      Cinematic education · Concierge chatbot · Consult funnels · SaaS automation · Enterprise vaults
-    </p>
-
-    <div style="display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:30px;">
-      <a href="#masterclass" class="cta-button">Masterclass</a>
-      <a href="#concierge" class="cta-button">Concierge</a>
-      <a href="#consulting" class="cta-button">Consulting</a>
+    <div class="button-row">
+      <a href="#masterclass-card" class="menu-button">Masterclass</a>
+      <a href="#concierge-card" class="menu-button-active">Concierge</a>
+      <a href="#consulting-card" class="menu-button">Consulting</a>
     </div>
   </section>
-  <main>
-    <section id="chatbot-hero" style="background:var(--card-bg); padding:2rem; border-radius:12px; box-shadow:0 0 20px rgba(255,215,0,0.2); animation:fadeInUp 1.5s ease-out;">
-      <h2>Welcome to BourgeoisAI</h2>
-      <p>Ask me anything about AI automation and productivity!</p>
-      <div id="chat-window" style="background:#111827; border-radius:6px; border:1px solid var(--card-border); height:250px; overflow-y:auto; padding:1rem; font-size:14px; color:var(--text-light);">
-        ✨ Chatbot ready. Type your question below to begin.
+  <main class="content-grid">
+    <section id="masterclass-card" class="card">
+      <h2>Fundamentals Now</h2>
+      <p style="color:var(--text-light); margin-bottom: 2rem;">
+        Unlock your potential with our foundational AI workshop. Learn to automate workflows, expand income streams, and reclaim your creative time.
+      </p>
+      <div style="font-size:2.5rem; font-weight:800; color:var(--accent-primary); margin-bottom: 1rem;">
+        $29 <span style="font-size:1.1rem; color:var(--text-light);">USD</span>
       </div>
-      <form id="chat-form" style="display:flex; gap:0.5rem; margin-top:0.5rem;">
-        <input type="text" id="user-input" placeholder="Type your message..." style="flex:1; padding:0.75rem; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
-        <button type="submit" class="cta-button">➤</button>
+      <div class="card-footer-button-container">
+        <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="card-action-button">Secure Your Copy Now</a>
+      </div>
+    </section>
+    <section id="concierge-card" class="card">
+      <h2>Chat Form</h2>
+      <p style="color:var(--text-light); font-size: 0.9rem; margin-bottom: 1rem;">
+        Ask anything about AI automation and productivity.
+      </p>
+      <div class="chat-history">
+        <p style="color:var(--accent-primary);">✨ Concierge AI: How may I assist you with automation?</p>
+      </div>
+      <form id="chat-form" style="display:block;">
+        <div class="chat-card-input-group">
+          <input type="text" id="user-input" placeholder="Type your message..." />
+          <button type="submit" aria-label="Search">🔍</button>
+        </div>
       </form>
+      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="book-call-link">
+        Book a Call
+        <span>▶</span>
+      </a>
+      <div class="card-footer-button-container">
+        <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="card-action-button">Book a Call</a>
+      </div>
     </section>
-
-    <section id="purchase">
-      <h2>The AI Productivity Blueprint Workshop</h2>
-      <p class="price" style="color:var(--accent-primary); font-weight:700;">$29 USD (One-Time Payment)</p>
-      <p>A compact, 40-minute high-performance AI workshop by Thomas Bourgeois that helps you automate your workflow, expand your income, and take control of your creative time.</p>
-      <a href="https://gum.new/gum/cmhea7svt001104ju7d2p1syw" target="_blank" rel="noopener noreferrer" class="cta-button">Secure Your Copy Now</a>
-    </section>
-
-    <section>
-      <h2>Need Expert Help? Book a Strategy Session</h2>
-      <p style="color:var(--text-light); font-weight:600;">Ask BourgeoisAI about our services, AI automation, or book a free discovery call.</p>
-      <a href="https://calendly.com/thomas-bourgeoisai/new-meeting" target="_blank" rel="noopener noreferrer" class="cta-button">Book a Call</a>
-    </section>
-
-    <section id="email-support">
-      <h2>Contact BourgeoisAI Support</h2>
-      <p style="color:var(--text-light); font-weight:600;">Submit a message directly to our support inbox. We'll respond within 24 hours.</p>
-      <form action="mailto:bourgeoisaisupport@proton.me" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your name" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
-        <input type="email" name="email" placeholder="Your email" required style="width:100%; padding:0.75rem; margin-bottom:1rem; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;" />
-        <textarea name="message" placeholder="Your message..." rows="5" required style="width:100%; padding:0.75rem; border-radius:6px; border:1px solid #374151; background:#1f2937; color:white;"></textarea>
-        <br /><br />
-        <button type="submit" class="cta-button">Send Email</button>
-      </form>
+    <section id="email-support-1" class="card">
+      <h2>Email Support</h2>
+      <p style="color:var(--text-light); margin-bottom: 2rem;">
+        Have questions or need assistance? Our dedicated support team is here to help. Send us a message and we'll get back to you promptly.
+      </p>
+      <div class="card-footer-button-container">
+        <form action="mailto:bourgeoisaisupport@proton.me" method="POST" enctype="text/plain">
+          <button type="submit" class="card-action-button">Send Email</button>
+        </form>
+      </div>
     </section>
   </main>
-
-  <footer style="text-align:center; padding:1rem; font-size:0.9rem; background:#1B112B;">
-    © 2025 BourgeoisAI Solutions •
-    <a href="https://bourgeoisai.com" target="_blank" style="color:var(--accent-primary); text-decoration:none; margin:0 0.5rem;">bourgeoisai.com</a>•
-    <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank" style="color:var(--accent-primary); text-decoration:none; margin:0 0.5rem;">LinkedIn</a>
+  <footer>
+    <p>
+      Copyright with AI - Intelligenis AI Solutions
+    </p>
+    <p>
+      <a href="https://bourgeoisai.com" target="_blank">© bourgeoisai.com</a>
+      |
+      <a href="https://www.linkedin.com/in/thomas-bourgeois-7933491a2/" target="_blank">LinkedIn</a>
+    </p>
   </footer>
-
+  <script>
+    document.getElementById('chat-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const input = document.getElementById('user-input');
+      const chatHistory = document.querySelector('.chat-history');
+      const userMessage = input.value.trim();
+      if (userMessage) {
+        const userP = document.createElement('p');
+        userP.style.textAlign = 'right';
+        userP.style.color = '#fff';
+        userP.textContent = 'You: ' + userMessage;
+        chatHistory.appendChild(userP);
+        setTimeout(() => {
+            const aiP = document.createElement('p');
+            aiP.style.textAlign = 'left';
+            aiP.style.color = 'var(--accent-primary)'; 
+            aiP.textContent = 'Concierge AI: I received your query! Please click "Book a Call" for detailed assistance.';
+            chatHistory.appendChild(aiP);
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        }, 800);
+        input.value = '';
+        chatHistory.scrollTop = chatHistory.scrollHeight;
+      }
+    });
+  </script>
 </body>
 </html>
